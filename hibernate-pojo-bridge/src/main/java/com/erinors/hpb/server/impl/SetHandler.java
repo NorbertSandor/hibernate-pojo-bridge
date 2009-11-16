@@ -30,13 +30,16 @@ public class SetHandler extends AbstractPersistentObjectHandler
         }
         else
         {
-            Set<Object> set = new HashSet<Object>(source.size());
+            com.erinors.hpb.client.impl.PersistentSet<Object> set = new com.erinors.hpb.client.impl.PersistentSet<Object>(
+                    source.size());
             context.addProcessedObject(object, set);
 
             for (Object element : source)
             {
                 set.add(context.clone(element));
             }
+
+            set.setDirty(false);
 
             result = set;
         }
@@ -62,12 +65,18 @@ public class SetHandler extends AbstractPersistentObjectHandler
         }
         else
         {
-            Set<Object> set = new HashSet<Object>(source.size());
+            PersistentSet set = new PersistentSet(context.getSessionImplementor(), new HashSet<Object>());
             context.addProcessedObject(object, set);
 
             for (Object element : source)
             {
                 set.add(context.merge(element));
+            }
+
+            if (source instanceof com.erinors.hpb.client.impl.PersistentSet
+                    && !((com.erinors.hpb.client.impl.PersistentSet) source).isDirty())
+            {
+                set.clearDirty();
             }
 
             result = set;
