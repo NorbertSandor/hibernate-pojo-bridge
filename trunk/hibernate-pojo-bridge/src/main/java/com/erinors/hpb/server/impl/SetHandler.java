@@ -10,6 +10,9 @@ import org.hibernate.collection.PersistentSet;
 
 import com.erinors.hpb.client.impl.UninitializedPersistentSet;
 
+/**
+ * @author Norbert Sándor
+ */
 public class SetHandler extends AbstractPersistentObjectHandler
 {
     @Override
@@ -23,23 +26,38 @@ public class SetHandler extends AbstractPersistentObjectHandler
         Set<?> source = (Set<?>) object;
         Set<?> result;
 
-        if (source instanceof PersistentSet && !((PersistentSet) source).wasInitialized())
+        if (source instanceof PersistentSet)
         {
-            result = new UninitializedPersistentSet();
-            context.addProcessedObject(object, result);
+            if (((PersistentSet) source).wasInitialized())
+            {
+                com.erinors.hpb.client.impl.PersistentSet<Object> set = new com.erinors.hpb.client.impl.PersistentSet<Object>(
+                        source.size());
+                context.addProcessedObject(object, set);
+
+                for (Object element : source)
+                {
+                    set.add(context.clone(element));
+                }
+
+                set.setDirty(false);
+
+                result = set;
+            }
+            else
+            {
+                result = new UninitializedPersistentSet();
+                context.addProcessedObject(object, result);
+            }
         }
         else
         {
-            com.erinors.hpb.client.impl.PersistentSet<Object> set = new com.erinors.hpb.client.impl.PersistentSet<Object>(
-                    source.size());
+            Set<Object> set = new HashSet<Object>(source.size());
             context.addProcessedObject(object, set);
 
             for (Object element : source)
             {
                 set.add(context.clone(element));
             }
-
-            set.setDirty(false);
 
             result = set;
         }
@@ -63,7 +81,7 @@ public class SetHandler extends AbstractPersistentObjectHandler
             result = new PersistentSet(context.getSessionImplementor());
             context.addProcessedObject(object, result);
         }
-        else
+        else if (source instanceof com.erinors.hpb.client.impl.PersistentSet)
         {
             PersistentSet set = new PersistentSet(context.getSessionImplementor(), new HashSet<Object>());
             context.addProcessedObject(object, set);
@@ -73,10 +91,21 @@ public class SetHandler extends AbstractPersistentObjectHandler
                 set.add(context.merge(element));
             }
 
-            if (source instanceof com.erinors.hpb.client.impl.PersistentSet
-                    && !((com.erinors.hpb.client.impl.PersistentSet) source).isDirty())
+            if (!((com.erinors.hpb.client.impl.PersistentSet<?>) source).isDirty())
             {
                 set.clearDirty();
+            }
+
+            result = set;
+        }
+        else
+        {
+            Set<Object> set = new HashSet<Object>(source.size());
+            context.addProcessedObject(object, set);
+
+            for (Object element : source)
+            {
+                set.add(context.merge(element));
             }
 
             result = set;

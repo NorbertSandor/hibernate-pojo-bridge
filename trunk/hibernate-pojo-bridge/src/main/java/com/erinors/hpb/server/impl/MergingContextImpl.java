@@ -9,6 +9,9 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.engine.SessionImplementor;
 
+/**
+ * @author Norbert Sándor
+ */
 public class MergingContextImpl extends AbstractContext implements MergingContext
 {
     private final EntityManager entityManager;

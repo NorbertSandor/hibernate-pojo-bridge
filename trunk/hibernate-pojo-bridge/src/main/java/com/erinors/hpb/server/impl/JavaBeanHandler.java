@@ -13,6 +13,9 @@ import org.springframework.util.ReflectionUtils;
 
 import com.erinors.hpb.client.api.HibernateProxyGwtSupport;
 
+/**
+ * @author Norbert Sándor
+ */
 public class JavaBeanHandler extends AbstractPersistentObjectHandler
 {
     private interface ObjectCopier
@@ -89,6 +92,8 @@ public class JavaBeanHandler extends AbstractPersistentObjectHandler
 	{
 	    if (pd.getWriteMethod() != null && pd.getReadMethod() != null)
 	    {
+                // TODO trace
+	        
 		try
 		{
 		    Object value = PropertyUtils.getSimpleProperty(object, pd.getName());
@@ -99,6 +104,10 @@ public class JavaBeanHandler extends AbstractPersistentObjectHandler
 		{
 		    throw new RuntimeException(e); // FIXME
 		}
+	    }
+	    else
+	    {
+	        // TODO trace
 	    }
 	}
 

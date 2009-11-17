@@ -10,6 +10,9 @@ import org.hibernate.collection.PersistentList;
 
 import com.erinors.hpb.client.impl.UninitializedPersistentList;
 
+/**
+ * @author Norbert Sándor
+ */
 public class ListHandler extends AbstractPersistentObjectHandler
 {
     @Override
@@ -23,10 +26,28 @@ public class ListHandler extends AbstractPersistentObjectHandler
         List<?> source = (List<?>) object;
         List<?> result;
 
-        if (source instanceof PersistentList && !((PersistentList) source).wasInitialized())
+        if (source instanceof PersistentList)
         {
-            result = new UninitializedPersistentList();
-            context.addProcessedObject(object, result);
+            if (((PersistentList) source).wasInitialized())
+            {
+                com.erinors.hpb.client.impl.PersistentList<Object> list = new com.erinors.hpb.client.impl.PersistentList<Object>(
+                        source.size());
+                context.addProcessedObject(object, list);
+
+                for (Object element : source)
+                {
+                    list.add(context.clone(element));
+                }
+
+                list.setDirty(false);
+
+                result = list;
+            }
+            else
+            {
+                result = new UninitializedPersistentList();
+                context.addProcessedObject(object, result);
+            }
         }
         else
         {
@@ -59,6 +80,23 @@ public class ListHandler extends AbstractPersistentObjectHandler
         {
             result = new PersistentList(context.getSessionImplementor());
             context.addProcessedObject(object, result);
+        }
+        else if (source instanceof com.erinors.hpb.client.impl.PersistentList)
+        {
+            PersistentList list = new PersistentList(context.getSessionImplementor(), new ArrayList<Object>());
+            context.addProcessedObject(object, list);
+
+            for (Object element : source)
+            {
+                list.add(context.merge(element));
+            }
+
+            if (!((com.erinors.hpb.client.impl.PersistentList<?>) source).isDirty())
+            {
+                list.clearDirty();
+            }
+
+            result = list;
         }
         else
         {

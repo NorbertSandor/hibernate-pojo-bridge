@@ -4,6 +4,9 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 
+/**
+ * @author Norbert Sándor
+ */
 public class PersistentSet<E> extends HashSet<E>
 {
     private static final long serialVersionUID = 1L;
@@ -48,8 +51,9 @@ public class PersistentSet<E> extends HashSet<E>
     @Override
     public void clear()
     {
+        boolean empty = isEmpty();
         super.clear();
-        markAsDirty(true);
+        markAsDirty(!empty);
     }
 
     @Override

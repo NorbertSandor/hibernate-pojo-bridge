@@ -8,6 +8,9 @@ import org.springframework.util.ReflectionUtils;
 
 import com.erinors.hpb.client.api.HibernateProxyGwtSupport;
 
+/**
+ * @author Norbert Sándor
+ */
 public class UninitializedHibernateProxyHandler extends AbstractPersistentObjectHandler
 {
     @Override

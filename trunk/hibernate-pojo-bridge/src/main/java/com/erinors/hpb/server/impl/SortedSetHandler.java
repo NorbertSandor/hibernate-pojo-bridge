@@ -14,6 +14,9 @@ import org.hibernate.collection.PersistentSortedSet;
 import com.erinors.hpb.client.impl.UninitializedPersistentSet;
 import com.erinors.hpb.client.impl.UninitializedPersistentSortedSet;
 
+/**
+ * @author Norbert Sándor
+ */
 public class SortedSetHandler extends AbstractPersistentObjectHandler
 {
     @Override

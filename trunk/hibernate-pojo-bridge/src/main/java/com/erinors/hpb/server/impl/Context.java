@@ -3,6 +3,9 @@
  */
 package com.erinors.hpb.server.impl;
 
+/**
+ * @author Norbert Sándor
+ */
 public interface Context
 {
     Object getProcessedObject(Object source);

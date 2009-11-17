@@ -6,6 +6,9 @@ import java.util.Iterator;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+/**
+ * @author Norbert Sándor
+ */
 public class UninitializedPersistentSortedSet<E> extends TreeSet<E> {
     private static final long serialVersionUID = 1L;
 

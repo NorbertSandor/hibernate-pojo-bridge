@@ -7,6 +7,9 @@ import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+/**
+ * @author Norbert Sándor
+ */
 public class UninitializedPersistentSortedMap<K, V> extends TreeMap<K, V> {
     private static final long serialVersionUID = 1L;
 

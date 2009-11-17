@@ -7,6 +7,9 @@ import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author Norbert Sándor
+ */
 public abstract class AbstractContext implements Context
 {
     private final Map<Object, Object> processedObjects = new IdentityHashMap<Object, Object>();

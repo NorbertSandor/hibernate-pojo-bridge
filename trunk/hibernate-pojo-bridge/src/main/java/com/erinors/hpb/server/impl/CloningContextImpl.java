@@ -5,6 +5,9 @@ package com.erinors.hpb.server.impl;
 
 import java.util.List;
 
+/**
+ * @author Norbert Sándor
+ */
 public class CloningContextImpl extends AbstractContext implements CloningContext
 {
     protected CloningContextImpl(List<? extends PersistentObjectHandler> handlers)

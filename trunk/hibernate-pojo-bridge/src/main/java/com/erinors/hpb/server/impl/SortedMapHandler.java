@@ -11,6 +11,9 @@ import org.hibernate.collection.PersistentSortedMap;
 
 import com.erinors.hpb.client.impl.UninitializedPersistentSortedMap;
 
+/**
+ * @author Norbert Sándor
+ */
 public class SortedMapHandler extends AbstractPersistentObjectHandler
 {
     @Override

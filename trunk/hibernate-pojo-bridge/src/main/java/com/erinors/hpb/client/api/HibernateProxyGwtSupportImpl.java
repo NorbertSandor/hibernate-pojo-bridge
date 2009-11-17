@@ -1,5 +1,8 @@
 package com.erinors.hpb.client.api;
 
+/**
+ * @author Norbert Sándor
+ */
 public class HibernateProxyGwtSupportImpl implements HibernateProxyGwtSupport
 {
     private Object uninitializedHibernateProxyId;
