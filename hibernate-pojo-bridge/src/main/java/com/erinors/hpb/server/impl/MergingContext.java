@@ -7,6 +7,9 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.engine.SessionImplementor;
 
+/**
+ * @author Norbert Sándor
+ */
 public interface MergingContext extends Context
 {
     void addProcessedObject(Object source, Object merged);

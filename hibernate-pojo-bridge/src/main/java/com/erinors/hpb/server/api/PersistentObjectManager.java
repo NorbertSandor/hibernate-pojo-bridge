@@ -3,6 +3,9 @@
  */
 package com.erinors.hpb.server.api;
 
+/**
+ * @author Norbert Sándor
+ */
 public interface PersistentObjectManager
 {
     <T> T clone(T object);

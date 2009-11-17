@@ -8,6 +8,9 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * @author Norbert Sándor
+ */
 public class SimpleTypeHandler extends AbstractPersistentObjectHandler
 {
     private static final Set<Class<?>> immutableTypeClasses = new HashSet<Class<?>>(Arrays.asList(new Class<?>[]

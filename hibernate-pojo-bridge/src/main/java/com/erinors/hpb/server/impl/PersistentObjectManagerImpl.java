@@ -24,6 +24,9 @@ import org.springframework.orm.jpa.EntityManagerFactoryUtils;
 
 import com.erinors.hpb.server.api.PersistentObjectManager;
 
+/**
+ * @author Norbert Sándor
+ */
 public class PersistentObjectManagerImpl implements PersistentObjectManager, BeanFactoryAware, ApplicationListener
 {
     private ListableBeanFactory beanFactory;

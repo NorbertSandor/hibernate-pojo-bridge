@@ -1,5 +1,8 @@
 package com.erinors.hpb.client.api;
 
+/**
+ * @author Norbert Sándor
+ */
 public interface HibernateProxyGwtSupport
 {
     boolean isUninitializedHibernateProxy();

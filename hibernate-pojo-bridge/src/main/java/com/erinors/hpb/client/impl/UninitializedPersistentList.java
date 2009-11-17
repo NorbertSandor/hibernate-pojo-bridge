@@ -8,6 +8,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.ListIterator;
 
+/**
+ * @author Norbert Sándor
+ */
 public class UninitializedPersistentList<E> extends UninitializedPersistentCollection<E> implements List<E>, Serializable
 {
     private static final long serialVersionUID = 1L;

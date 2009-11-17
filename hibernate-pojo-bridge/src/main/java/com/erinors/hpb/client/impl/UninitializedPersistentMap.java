@@ -5,6 +5,9 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * @author Norbert Sándor
+ */
 public class UninitializedPersistentMap<K, V> implements Map<K, V>, Serializable
 {
     private static final long serialVersionUID = 1L;

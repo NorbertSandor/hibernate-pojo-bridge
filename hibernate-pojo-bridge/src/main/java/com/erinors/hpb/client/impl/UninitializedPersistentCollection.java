@@ -6,6 +6,9 @@ package com.erinors.hpb.client.impl;
 import java.util.Collection;
 import java.util.Iterator;
 
+/**
+ * @author Norbert Sándor
+ */
 public abstract class UninitializedPersistentCollection<E> implements Collection<E>
 {
     protected static final String ERROR_MESSAGE = "Uninitialized collections should not be accessed.";

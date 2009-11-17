@@ -3,6 +3,9 @@
  */
 package com.erinors.hpb.server.impl;
 
+/**
+ * @author Norbert Sándor
+ */
 public abstract class AbstractPersistentObjectHandler implements PersistentObjectHandler
 {
     private int order;
