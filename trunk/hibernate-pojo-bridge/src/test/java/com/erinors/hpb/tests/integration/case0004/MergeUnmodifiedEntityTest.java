@@ -10,9 +10,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.erinors.hpb.server.api.PersistentObjectManager;
-import com.erinors.hpb.tests.integration.EmptyPersistentObjectManager;
+import com.erinors.hpb.test.EmptyPersistentObjectManager;
+import com.erinors.hpb.test.SqlAppender;
 import com.erinors.hpb.tests.integration.HpbIntegrationTestCase;
-import com.erinors.hpb.tests.integration.SqlAppender;
 
 public class MergeUnmodifiedEntityTest extends HpbIntegrationTestCase
 {

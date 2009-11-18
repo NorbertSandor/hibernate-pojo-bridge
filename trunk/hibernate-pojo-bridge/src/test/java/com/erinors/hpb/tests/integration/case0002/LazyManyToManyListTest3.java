@@ -13,9 +13,10 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.erinors.hpb.server.api.PersistentObjectManager;
-import com.erinors.hpb.tests.integration.EmptyPersistentObjectManager;
+import com.erinors.hpb.test.EmptyPersistentObjectManager;
+import com.erinors.hpb.test.HpbTestUtils;
+import com.erinors.hpb.test.SqlAppender;
 import com.erinors.hpb.tests.integration.HpbIntegrationTestCase;
-import com.erinors.hpb.tests.integration.SqlAppender;
 
 public class LazyManyToManyListTest3 extends HpbIntegrationTestCase
 {
@@ -40,7 +41,7 @@ public class LazyManyToManyListTest3 extends HpbIntegrationTestCase
     @AfterClass
     public static void afterClass()
     {
-        assertHaveSameDml(sqls.get(0), sqls.get(1));
+        HpbTestUtils.assertHaveSameDml(sqls.get(0), sqls.get(1));
     }
 
     private void testAddAndRemove(final PersistentObjectManager persistentObjectManager)

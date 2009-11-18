@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Erinors 2007-2010. All rights reserved.
  */
-package com.erinors.hpb.tests.integration;
+package com.erinors.hpb.test;
 
 import com.erinors.hpb.server.api.PersistentObjectManager;
 
