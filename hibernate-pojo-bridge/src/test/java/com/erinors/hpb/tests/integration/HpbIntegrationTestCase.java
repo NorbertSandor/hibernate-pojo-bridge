@@ -25,7 +25,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.erinors.hpb.server.api.PersistentObjectManager;
 import com.erinors.hpb.test.SqlAppender;
 
-public class HpbIntegrationTestCase
+public abstract class HpbIntegrationTestCase
 {
     private ClassPathXmlApplicationContext applicationContext;
 

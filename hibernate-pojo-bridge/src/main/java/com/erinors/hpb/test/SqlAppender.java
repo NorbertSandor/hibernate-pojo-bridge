@@ -69,7 +69,7 @@ public class SqlAppender<E> extends WriterAppender<E>
                 Matcher matcher = Pattern.compile("binding (.*) to parameter: (\\d+)").matcher(line);
                 if (matcher.matches())
                 {
-                    assert Integer.parseInt(matcher.group(2)) == currentArguments.size() - 1;
+                    assert Integer.parseInt(matcher.group(2)) == currentArguments.size() + 1;
                     currentArguments.add(matcher.group(1));
                 }
                 else
