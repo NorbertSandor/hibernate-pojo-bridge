@@ -8,7 +8,7 @@
     </layout>
   </appender>
   
-  <appender name="SQL" class="com.erinors.hpb.tests.integration.SqlAppender">
+  <appender name="SQL" class="com.erinors.hpb.test.SqlAppender">
 		<layout class="ch.qos.logback.classic.PatternLayout">
 			<Pattern>%msg%n</Pattern>
     </layout>
@@ -24,10 +24,6 @@
   
   <logger name="org.hibernate.SQL" level="debug" additivity="false">
     <appender-ref ref="SQL" />
-  </logger>
-  
-  <logger name="org.hibernate.SQL" level="debug" additivity="false">
-    <appender-ref ref="STDOUT" />
   </logger>
   
   <logger name="org.hibernate.type" level="trace" additivity="false">
