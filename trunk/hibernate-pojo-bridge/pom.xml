@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.erinors</groupId>
 	<artifactId>hibernate-pojo-bridge</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.2</version>
 	<name>Hibernate-POJO bridge</name>
 	<description>Performs recursive conversion between Hibernate managed entities and plain old Java objects.</description>
 	<organization>
@@ -196,6 +196,13 @@
 				<version>2.0-beta-6</version>
 			</plugin>
 		</plugins>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav</artifactId>
+				<version>1.0-beta-2</version>
+			</extension>
+		</extensions>
 	</build>
 	<repositories>
 		<repository>
@@ -239,4 +246,15 @@
 			<url>http://gwtchismes.googlecode.com/svn/mavenrepo/</url>
 		</repository>
 	</repositories>
+	<distributionManagement>
+		<repository>
+			<id>googlecode.hpb.repo</id>
+			<url>dav:https://hibernate-pojo-bridge.googlecode.com/svn/maven-repository/</url>
+		</repository>
+		<snapshotRepository>
+			<id>googlecode.hpb.snapshotrepo</id>
+			<url>dav:https://hibernate-pojo-bridge.googlecode.com/svn/maven-snapshot-repository/</url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
+	</distributionManagement>
 </project>
