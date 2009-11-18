@@ -13,20 +13,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.erinors.hpb.client.api;
+
+package com.erinors.hpb.server.impl;
+
+import java.util.Date;
 
 /**
  * @author Norbert Sándor
  */
-public interface HibernateProxyGwtSupport
+public class DateHandler extends AbstractPersistentObjectHandler
 {
-    boolean isUninitializedHibernateProxy();
+    @Override
+    public Object clone(CloningContext context, Object object)
+    {
+        return copy(object);
+    }
 
-    void setUninitializedHibernateProxy(boolean value);
+    @Override
+    public Object merge(MergingContext context, Object object)
+    {
+        return copy(object);
+    }
 
-    // FIXME remove this property and store the proxy id in the id property of the object
-    Object getUninitializedHibernateProxyId();
-
-    void setUninitializedHibernateProxyId(Object id);
+    private Object copy(Object object)
+    {
+        if (object instanceof Date)
+        {
+            return ((Date) object).clone();
+        }
+        else
+        {
+            return null;
+        }
+    }
 }
-// FIXME Gwt helyett Pojo a névben

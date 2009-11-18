@@ -126,4 +126,4 @@ public class SqlAppender<E> extends WriterAppender<E>
         writer.getBuffer().setLength(0);
     }
 }
-// FIXME mit csinál, ha ? van a query-ben magában? pl szövegnek része
+// TODO what happens if the query itself contains a ? as static text?

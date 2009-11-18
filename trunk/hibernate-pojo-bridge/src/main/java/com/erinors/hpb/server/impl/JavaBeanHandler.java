@@ -24,7 +24,7 @@ import org.hibernate.proxy.HibernateProxy;
 import org.hibernate.proxy.LazyInitializer;
 import org.springframework.util.ReflectionUtils;
 
-import com.erinors.hpb.client.api.HibernateProxyGwtSupport;
+import com.erinors.hpb.client.api.HibernateProxyPojoSupport;
 
 /**
  * @author Norbert Sándor
@@ -69,8 +69,8 @@ public class JavaBeanHandler extends AbstractPersistentObjectHandler
     @Override
     public Object merge(final MergingContext context, Object object)
     {
-        if (object instanceof HibernateProxyGwtSupport
-                && ((HibernateProxyGwtSupport) object).isUninitializedHibernateProxy())
+        if (object instanceof HibernateProxyPojoSupport
+                && ((HibernateProxyPojoSupport) object).isUninitializedHibernateProxy())
         {
             throw new RuntimeException("Uninitialized proxies are not supported by this handler: " + object);
         }
@@ -97,7 +97,7 @@ public class JavaBeanHandler extends AbstractPersistentObjectHandler
         }
         catch (Exception e)
         {
-            throw new RuntimeException(e); // FIXME
+            throw new RuntimeException("Cannot instantiate: " + object.getClass(), e);
         }
 
         context.addProcessedObject(object, result);
@@ -116,7 +116,7 @@ public class JavaBeanHandler extends AbstractPersistentObjectHandler
                 }
                 catch (Exception e)
                 {
-                    throw new RuntimeException(e); // FIXME
+                    throw new RuntimeException("Cannot copy property " + pd.getName() + " of " + object, e);
                 }
             }
             else

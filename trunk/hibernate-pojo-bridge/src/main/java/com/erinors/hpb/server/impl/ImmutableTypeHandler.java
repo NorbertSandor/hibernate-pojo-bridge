@@ -17,14 +17,13 @@
 package com.erinors.hpb.server.impl;
 
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * @author Norbert Sándor
  */
-public class SimpleTypeHandler extends AbstractPersistentObjectHandler
+public class ImmutableTypeHandler extends AbstractPersistentObjectHandler
 {
     private static final Set<Class<?>> immutableTypeClasses = new HashSet<Class<?>>(Arrays.asList(new Class<?>[] {
             Boolean.class, Byte.class, Character.class, Double.class, Float.class, Integer.class, Long.class,
@@ -47,10 +46,6 @@ public class SimpleTypeHandler extends AbstractPersistentObjectHandler
         if (immutableTypeClasses.contains(object.getClass()) || object instanceof Enum)
         {
             return object;
-        }
-        else if (object instanceof Date)
-        {
-            return ((Date) object).clone(); // FIXME ez külön handler legyen
         }
         else
         {

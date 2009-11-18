@@ -105,4 +105,4 @@ public class PersistentObjectManagerImpl implements PersistentObjectManager, Bea
         return EntityManagerFactoryUtils.getTransactionalEntityManager(entityManagerFactory);
     }
 }
-// FIXME support other persistent collection types
+// TODO support other persistent collection types
