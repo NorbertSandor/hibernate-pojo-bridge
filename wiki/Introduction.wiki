@@ -1,0 +1,18 @@
+#summary Introduction and features
+
+= Introduction =
+
+This library allows the usage of Hibernate domain objects as POJOs, eg. in GWT applications.
+
+
+= Features =
+
+  * Supported types
+    * Immutable primitive types (boolean, int, etc.)
+    * java.util.Date
+    * persistent Set, List, Map - lazy and eager as well
+  * Support for lazy many-to-one associations
+
+Unsupported features:
+  * Property-level lazy fetching (for non-association properties)
+  * Special collection types (sorted sets/maps, bag, idbag, etc.)
