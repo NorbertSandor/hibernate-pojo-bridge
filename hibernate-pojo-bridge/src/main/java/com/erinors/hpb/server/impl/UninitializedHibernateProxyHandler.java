@@ -22,7 +22,7 @@ import org.hibernate.proxy.HibernateProxy;
 import org.hibernate.proxy.LazyInitializer;
 import org.springframework.util.ReflectionUtils;
 
-import com.erinors.hpb.client.api.HibernateProxyGwtSupport;
+import com.erinors.hpb.client.api.HibernateProxyPojoSupport;
 
 /**
  * @author Norbert Sándor
@@ -54,28 +54,28 @@ public class UninitializedHibernateProxyHandler extends AbstractPersistentObject
         //
 
         Class<?> persistentClass = lazyInitializer.getPersistentClass();
-        if (!HibernateProxyGwtSupport.class.isAssignableFrom(persistentClass))
+        if (!HibernateProxyPojoSupport.class.isAssignableFrom(persistentClass))
         {
             // TODO tesztet rá
             throw new RuntimeException("Uninitialized hibernate proxy should implement "
-                    + HibernateProxyGwtSupport.class.getName() + " to be cloneable: " + persistentClass);
+                    + HibernateProxyPojoSupport.class.getName() + " to be cloneable: " + persistentClass);
         }
 
         //
         // Clone
         //
 
-        HibernateProxyGwtSupport result;
+        HibernateProxyPojoSupport result;
         try
         {
             Constructor<?> constructor = persistentClass.getConstructor();
             ReflectionUtils.makeAccessible(constructor);
 
-            result = (HibernateProxyGwtSupport) constructor.newInstance();
+            result = (HibernateProxyPojoSupport) constructor.newInstance();
         }
         catch (Exception e)
         {
-            throw new RuntimeException(e); // FIXME
+            throw new RuntimeException("Cannot instantiate: " + persistentClass.getClass(), e);
         }
 
         result.setUninitializedHibernateProxy(true);
@@ -91,12 +91,12 @@ public class UninitializedHibernateProxyHandler extends AbstractPersistentObject
         // Check object
         //
 
-        if (!(object instanceof HibernateProxyGwtSupport))
+        if (!(object instanceof HibernateProxyPojoSupport))
         {
             return null;
         }
 
-        HibernateProxyGwtSupport hpgs = (HibernateProxyGwtSupport) object;
+        HibernateProxyPojoSupport hpgs = (HibernateProxyPojoSupport) object;
 
         if (!hpgs.isUninitializedHibernateProxy())
         {

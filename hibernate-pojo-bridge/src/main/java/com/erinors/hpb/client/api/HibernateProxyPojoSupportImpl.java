@@ -19,7 +19,7 @@ package com.erinors.hpb.client.api;
 /**
  * @author Norbert Sándor
  */
-public class HibernateProxyGwtSupportImpl implements HibernateProxyGwtSupport
+public class HibernateProxyPojoSupportImpl implements HibernateProxyPojoSupport
 {
     private Object uninitializedHibernateProxyId;
 
@@ -49,4 +49,3 @@ public class HibernateProxyGwtSupportImpl implements HibernateProxyGwtSupport
         this.uninitializedHibernateProxyId = id;
     }
 }
-// FIXME Gwt helyett Pojo a névben

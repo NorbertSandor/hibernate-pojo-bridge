@@ -15,36 +15,38 @@
 		http://www.springframework.org/schema/util/spring-util-2.0.xsd
 		">
 
-	<context:annotation-config />
-
-	<bean class="com.erinors.hpb.server.impl.SimpleTypeHandler">
+	<bean class="com.erinors.hpb.server.impl.ImmutableTypeHandler">
 		<property name="order">
 			<util:constant static-field="org.springframework.core.Ordered.HIGHEST_PRECEDENCE" />
 		</property>
 	</bean>
 
-	<bean class="com.erinors.hpb.server.impl.SortedSetHandler">
+	<bean class="com.erinors.hpb.server.impl.DateHandler">
 		<property name="order" value="100" />
+	</bean>
+
+	<bean class="com.erinors.hpb.server.impl.SortedSetHandler">
+		<property name="order" value="200" />
 	</bean>
 
 	<bean class="com.erinors.hpb.server.impl.SortedMapHandler">
-		<property name="order" value="100" />
+		<property name="order" value="200" />
 	</bean>
 
 	<bean class="com.erinors.hpb.server.impl.ListHandler">
-		<property name="order" value="200" />
+		<property name="order" value="300" />
 	</bean>
 
 	<bean class="com.erinors.hpb.server.impl.SetHandler">
-		<property name="order" value="200" />
+		<property name="order" value="300" />
 	</bean>
 
 	<bean class="com.erinors.hpb.server.impl.MapHandler">
-		<property name="order" value="200" />
+		<property name="order" value="300" />
 	</bean>
 
 	<bean class="com.erinors.hpb.server.impl.UninitializedHibernateProxyHandler">
-		<property name="order" value="200" />
+		<property name="order" value="300" />
 	</bean>
 
 	<bean class="com.erinors.hpb.server.impl.JavaBeanHandler">

@@ -27,11 +27,11 @@ import javax.persistence.Version;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.erinors.hpb.client.api.HibernateProxyGwtSupportImpl;
+import com.erinors.hpb.client.api.HibernateProxyPojoSupportImpl;
 
 @SuppressWarnings("serial")
 @MappedSuperclass
-public abstract class BaseEntity extends HibernateProxyGwtSupportImpl implements Serializable
+public abstract class BaseEntity extends HibernateProxyPojoSupportImpl implements Serializable
 {
     private long id;
 
