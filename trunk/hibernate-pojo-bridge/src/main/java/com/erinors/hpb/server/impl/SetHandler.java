@@ -104,7 +104,11 @@ public class SetHandler extends AbstractPersistentObjectHandler
                 set.add(context.merge(element));
             }
 
-            if (!((com.erinors.hpb.client.impl.PersistentSet<?>) source).isDirty())
+            if (((com.erinors.hpb.client.impl.PersistentSet<?>) source).isDirty())
+            {
+                set.dirty();
+            }
+            else
             {
                 set.clearDirty();
             }

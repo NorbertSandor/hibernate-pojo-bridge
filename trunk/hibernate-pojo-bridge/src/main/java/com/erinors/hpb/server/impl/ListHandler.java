@@ -104,7 +104,11 @@ public class ListHandler extends AbstractPersistentObjectHandler
                 list.add(context.merge(element));
             }
 
-            if (!((com.erinors.hpb.client.impl.PersistentList<?>) source).isDirty())
+            if (((com.erinors.hpb.client.impl.PersistentList<?>) source).isDirty())
+            {
+                list.dirty();
+            }
+            else
             {
                 list.clearDirty();
             }

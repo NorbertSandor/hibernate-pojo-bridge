@@ -102,7 +102,14 @@ public class PersistentObjectManagerImpl implements PersistentObjectManager, Bea
 
     private EntityManager getEntityManager()
     {
-        return EntityManagerFactoryUtils.getTransactionalEntityManager(entityManagerFactory);
+        EntityManager entityManager = EntityManagerFactoryUtils.getTransactionalEntityManager(entityManagerFactory);
+
+        if (entityManager == null)
+        {
+            throw new IllegalStateException("No transactional entity manager is available.");
+        }
+
+        return entityManager;
     }
 }
 // TODO support other persistent collection types
