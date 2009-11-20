@@ -104,7 +104,11 @@ public class MapHandler extends AbstractPersistentObjectHandler
                 map.put(context.merge(entry.getKey()), context.merge(entry.getValue()));
             }
 
-            if (!((com.erinors.hpb.client.impl.PersistentMap<?, ?>) source).isDirty())
+            if (((com.erinors.hpb.client.impl.PersistentMap<?, ?>) source).isDirty())
+            {
+                map.dirty();
+            }
+            else
             {
                 map.clearDirty();
             }
