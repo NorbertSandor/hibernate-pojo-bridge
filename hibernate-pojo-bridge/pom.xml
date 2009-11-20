@@ -56,7 +56,7 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.5</version>
-			<scope>test</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -114,7 +114,7 @@
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-core</artifactId>
 			<version>0.9.14</version>
-			<scope>test</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
@@ -197,13 +197,13 @@
 			</plugin>
 		</plugins>
 		<!-- Required when deploying, but m2eclipse freezes -->
-<!--		<extensions>-->
-<!--			<extension>-->
-<!--				<groupId>org.apache.maven.wagon</groupId>-->
-<!--				<artifactId>wagon-webdav</artifactId>-->
-<!--				<version>1.0-beta-2</version>-->
-<!--			</extension>-->
-<!--		</extensions>-->
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav</artifactId>
+				<version>1.0-beta-2</version>
+			</extension>
+		</extensions>
 	</build>
 	<reporting>
 		<plugins>
