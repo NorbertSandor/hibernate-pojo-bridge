@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.erinors</groupId>
 	<artifactId>hibernate-pojo-bridge</artifactId>
-	<version>1.0.4</version>
+	<version>1.0.5-SNAPSHOT</version>
 	<name>Hibernate-POJO bridge</name>
 	<description>Performs recursive conversion between Hibernate managed entities and plain old Java objects.</description>
 	<organization>
@@ -197,13 +197,13 @@
 			</plugin>
 		</plugins>
 		<!-- Required when deploying, but m2eclipse freezes -->
-		<extensions>
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-webdav</artifactId>
-				<version>1.0-beta-2</version>
-			</extension>
-		</extensions>
+<!--		<extensions>-->
+<!--			<extension>-->
+<!--				<groupId>org.apache.maven.wagon</groupId>-->
+<!--				<artifactId>wagon-webdav</artifactId>-->
+<!--				<version>1.0-beta-2</version>-->
+<!--			</extension>-->
+<!--		</extensions>-->
 	</build>
 	<reporting>
 		<plugins>
