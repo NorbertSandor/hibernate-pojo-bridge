@@ -19,7 +19,7 @@ Hibernate-pojo-bridge should be on your classpath. If you use maven, add the fol
 
 Because the library is currently not uploaded to the central maven repository, you should add the following Maven repository as well: http://hibernate-pojo-bridge.googlecode.com/svn/maven-repository/
 
-If you do not use a Maven repository manager (probably you should!) then add the following directly to your pom.xml's:
+If you do not use a Maven repository manager then add the following directly to your pom.xml:
 
 {{{
 <repositories>
