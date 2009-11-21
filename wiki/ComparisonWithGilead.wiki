@@ -1,0 +1,16 @@
+#summary Comparing hibernate-pojo-bridge and Gilead
+#labels Featured
+
+[http://noon.gilead.free.fr/gilead/ Gilead] is widely used for achieving similar goals as this library, so you may ask "why another library"?
+
+I have been working on an enterprise-class, complex application, using Gilead for entity transformation. We found that:
+
+  * Gilead is too complex for our needs, we needed only Hibernate support with a minimal number of dependencies (no beanlib, no jboss-serialization)
+  * sometimes the very complex objects graphs were not merged properly, causing hard-to-find bugs
+  * We developed a stateless application, in which case Gilead stores the [http://noon.gilead.free.fr/javadoc/net/sf/gilead/pojo/java5/LightEntity.html proxy informations] in the entities. Sometimes very huge amount of information is stored here.
+
+So I decided to implement the features we needed:
+
+  * Very simple implementation for merging and cloning object graphs, and leaving Hibernate to do the hard work.
+  * Supporting only Hibernate, therefore making the implementation even more simple.
+  * Not storing serialized proxy informations in the objects, instead storing the information in the object graph itself.
