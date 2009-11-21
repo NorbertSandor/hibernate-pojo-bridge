@@ -1,8 +1,6 @@
 #summary How to use hibernate-pojo-bridge
 #labels Featured
 
-= Details =
-
 == Setup classpath ==
 
 Hibernate-pojo-bridge should be on your classpath. If you use maven, add the following dependency to your pom.xml:
@@ -80,3 +78,13 @@ To summarize:
   * you should call !PersistentObjectManager.merge() for client->server transformation
   * you should call !PersistentObjectManager.clone() for server->client transformation
   * before merging optionally call !EntityManager.flush() (forcing Hibernate to increase the version number of the entities)
+
+== GWT setup ==
+
+Your GWT module should inherit the library's functionalities by adding the following line to your gwt.xml:
+
+{{{
+<inherits name="com.erinors.hpb.HibernatePojoBridge" />
+}}}
+
+On the client side no extra work is required, just use your domain objects as you wish, all transformation is performed on the server side.
