@@ -25,13 +25,13 @@ If you do not use a Maven repository manager then add the following directly to 
     ...
     <repository>
         <id>hpb-release-repo</id>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <url>http://repository.codehaus.org</url>
+        <releases>
+            <enabled>true</enabled>
+        </releases>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+        <url>http://repository.codehaus.org</url>
     </repository>
 </repositories>
 }}}
