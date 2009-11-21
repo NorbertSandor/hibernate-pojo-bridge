@@ -1,4 +1,5 @@
 #summary How to use hibernate-pojo-bridge
+#labels Featured
 
 = Details =
 
