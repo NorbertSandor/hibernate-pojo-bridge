@@ -67,9 +67,9 @@ public class MergeUnmodifiedEntityTest extends HpbIntegrationTestCase
         detached[0] = persistentObjectManager.clone(detached[0]);
 
         Assert.assertEquals(Arrays.asList("insert into Parent (version, id) values ('0', '100')",
-                "insert into Child (version, value, id) values ('0', '1', '102')",
-                "insert into Child (version, value, id) values ('0', '2', '103')",
-                "insert into Child (version, value, id) values ('0', '0', '101')",
+                "insert into Child (version, bigValue, value, id) values ('0', '1', '1', '102')",
+                "insert into Child (version, bigValue, value, id) values ('0', '2', '2', '103')",
+                "insert into Child (version, bigValue, value, id) values ('0', '0', '0', '101')",
                 "insert into Parent_Child (Parent_id, children_id) values ('100', '102')",
                 "insert into Parent_Child (Parent_id, children_id) values ('100', '103')",
                 "insert into Parent_Child (Parent_id, children_id) values ('100', '101')"), SqlAppender.get().getSql());
