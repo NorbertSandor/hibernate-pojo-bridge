@@ -5,6 +5,8 @@
 
 This library allows the usage of Hibernate domain objects as POJOs, eg. in GWT applications.
 
+For more information on see the [Usage] page and the [http://www.erinors.com/static/developer/project/hibernate-pojo-bridge/ generated Maven site].
+A work-in-progress demo application is available in SVN: [http://hibernate-pojo-bridge.googlecode.com/svn/trunk/hpb-example-webapp/ hpb-example-webapp]
 
 = Features =
 
