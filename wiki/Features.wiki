@@ -1,0 +1,14 @@
+#summary Features
+#labels Featured
+
+= Features =
+
+  * Supported types
+    * Immutable primitive types (boolean, int, etc.)
+    * java.util.Date
+    * persistent Set, List, Map - lazy and eager as well
+  * Support for lazy many-to-one associations
+
+Currently unsupported features:
+  * Property-level lazy fetching for simple properties
+  * Special collection types (sorted sets/maps, bag, idbag, etc.)
