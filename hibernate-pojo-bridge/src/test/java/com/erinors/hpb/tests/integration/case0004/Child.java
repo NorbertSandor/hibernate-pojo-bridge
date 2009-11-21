@@ -16,6 +16,8 @@
 
 package com.erinors.hpb.tests.integration.case0004;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 
 import com.erinors.hpb.tests.integration.BaseEntity;
@@ -27,6 +29,8 @@ public class Child extends BaseEntity
     private static final long serialVersionUID = 1L;
 
     private int value;
+    
+    private BigDecimal bigValue;
 
     public Child()
     {
@@ -35,6 +39,7 @@ public class Child extends BaseEntity
     public Child(int value)
     {
         setValue(value);
+        setBigValue(new BigDecimal(value));
     }
 
     public int getValue()
@@ -45,5 +50,15 @@ public class Child extends BaseEntity
     public void setValue(int value)
     {
         this.value = value;
+    }
+    
+    public BigDecimal getBigValue()
+    {
+        return bigValue;
+    }
+    
+    public void setBigValue(BigDecimal bigValue)
+    {
+        this.bigValue = bigValue;
     }
 }

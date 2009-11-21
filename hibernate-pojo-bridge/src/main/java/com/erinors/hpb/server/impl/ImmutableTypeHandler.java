@@ -16,6 +16,8 @@
 
 package com.erinors.hpb.server.impl;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -27,7 +29,7 @@ public class ImmutableTypeHandler extends AbstractPersistentObjectHandler
 {
     private static final Set<Class<?>> immutableTypeClasses = new HashSet<Class<?>>(Arrays.asList(new Class<?>[] {
             Boolean.class, Byte.class, Character.class, Double.class, Float.class, Integer.class, Long.class,
-            Short.class, String.class }));
+            Short.class, String.class, BigDecimal.class, BigInteger.class }));
 
     @Override
     public Object clone(CloningContext context, Object object)
