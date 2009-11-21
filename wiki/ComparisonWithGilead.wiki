@@ -14,3 +14,5 @@ So I decided to implement the features we needed:
   * Simple implementation for merging and cloning object graphs, and leaving Hibernate to do the hard work.
   * Supporting only Hibernate, therefore making the implementation even more simple.
   * Not storing serialized proxy informations in the objects, instead storing the information in the object graph itself.
+
+This means that this library is not a replacement for Gilead, it is an alternative only if you use Hibernate.
