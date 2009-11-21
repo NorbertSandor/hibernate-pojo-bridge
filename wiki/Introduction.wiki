@@ -14,6 +14,6 @@ This library allows the usage of Hibernate domain objects as POJOs, eg. in GWT a
     * persistent Set, List, Map - lazy and eager as well
   * Support for lazy many-to-one associations
 
-Unsupported features:
-  * Property-level lazy fetching (for non-association properties)
+Currently unsupported features:
+  * Property-level lazy fetching for simple properties
   * Special collection types (sorted sets/maps, bag, idbag, etc.)
