@@ -89,7 +89,7 @@ Your GWT module should inherit the library's functionalities by adding the follo
 
 On the client side no extra work is required, just use your domain objects as you wish, all transformation is performed on the server side.
 
-== Domain objects ==
+== Instrumenting domain objects ==
 
 By default you don't have to do anything with your domain classes.
 The only exception is when the domain objects are loaded as proxies, for example in case of lazy loading. All lazily referenced domain classes should implement the [http://www.erinors.com/static/developer/project/hibernate-pojo-bridge/apidocs/com/erinors/hpb/client/api/HibernateProxyPojoSupport.html HibernateProxyPojoSupport] interface. For a default implementation, see [http://www.erinors.com/static/developer/project/hibernate-pojo-bridge/apidocs/com/erinors/hpb/client/api/HibernateProxyPojoSupportImpl.html HibernateProxyPojoSupportImpl].
