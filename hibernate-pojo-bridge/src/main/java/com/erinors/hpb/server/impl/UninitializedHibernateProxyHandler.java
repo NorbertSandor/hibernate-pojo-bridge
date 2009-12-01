@@ -20,7 +20,6 @@ import java.lang.reflect.Constructor;
 
 import org.hibernate.proxy.HibernateProxy;
 import org.hibernate.proxy.LazyInitializer;
-import org.springframework.util.ReflectionUtils;
 
 import com.erinors.hpb.client.api.HibernateProxyPojoSupport;
 
@@ -68,9 +67,7 @@ public class UninitializedHibernateProxyHandler extends AbstractPersistentObject
         HibernateProxyPojoSupport result;
         try
         {
-            Constructor<?> constructor = persistentClass.getConstructor();
-            ReflectionUtils.makeAccessible(constructor);
-
+            Constructor<?> constructor = ClassUtils.getAccessibleNoArgConstructor(persistentClass);
             result = (HibernateProxyPojoSupport) constructor.newInstance();
         }
         catch (Exception e)

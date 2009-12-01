@@ -20,7 +20,7 @@ public class Bean
 {
     private int value;
 
-    public Bean()
+    protected Bean()
     {
     }
 

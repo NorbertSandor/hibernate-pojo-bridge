@@ -22,7 +22,6 @@ import java.lang.reflect.Constructor;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.hibernate.proxy.HibernateProxy;
 import org.hibernate.proxy.LazyInitializer;
-import org.springframework.util.ReflectionUtils;
 
 import com.erinors.hpb.client.api.HibernateProxyPojoSupport;
 
@@ -90,9 +89,7 @@ public class JavaBeanHandler extends AbstractPersistentObjectHandler
         Object result;
         try
         {
-            Constructor<?> constructor = object.getClass().getConstructor();
-            ReflectionUtils.makeAccessible(constructor);
-
+            Constructor<?> constructor = ClassUtils.getAccessibleNoArgConstructor(object.getClass());
             result = constructor.newInstance();
         }
         catch (Exception e)
