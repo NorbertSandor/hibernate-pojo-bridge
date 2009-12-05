@@ -40,7 +40,7 @@ public class NonHibernateTest extends HpbIntegrationTestCase
     }
 
     @Test
-    public void testProcessSimpleTypes()
+    public void testProcessTypes()
     {
         getPersistenceService().executeTransactionally(new Runnable()
         {
@@ -70,6 +70,11 @@ public class NonHibernateTest extends HpbIntegrationTestCase
                 Assert.assertEquals(new Short((short) 0), getPersistentObjectManager().merge(new Short((short) 0)));
                 Assert.assertEquals(new String("abc"), getPersistentObjectManager().merge(new String("abc")));
                 Assert.assertEquals(new Date(10000), getPersistentObjectManager().merge(new Date(10000)));
+
+                Assert.assertArrayEquals(new int[] { 1, 2, 3 }, getPersistentObjectManager().merge(
+                        new int[] { 1, 2, 3 }));
+                Assert.assertArrayEquals(new Integer[] { 1, 2, 3 }, getPersistentObjectManager().merge(
+                        new Integer[] { 1, 2, 3 }));
             }
         });
     }
@@ -92,6 +97,9 @@ public class NonHibernateTest extends HpbIntegrationTestCase
 
                 Assert.assertTrue(cloned != merged);
                 Assert.assertEquals(cloned.getValue(), merged.getValue());
+
+                Assert.assertArrayEquals(new Bean[] { new Bean(1), new Bean(2), new Bean(3) },
+                        getPersistentObjectManager().merge(new Bean[] { new Bean(1), new Bean(2), new Bean(3) }));
             }
         });
     }

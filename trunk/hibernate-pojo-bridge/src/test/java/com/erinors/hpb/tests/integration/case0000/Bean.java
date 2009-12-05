@@ -38,4 +38,22 @@ public class Bean
     {
         this.value = value;
     }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (!(obj instanceof Bean))
+        {
+            return false;
+        }
+
+        Bean other = (Bean) obj;
+        return getValue() == other.getValue();
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return getValue();
+    }
 }
