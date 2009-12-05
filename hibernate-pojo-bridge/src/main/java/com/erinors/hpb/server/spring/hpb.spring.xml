@@ -25,6 +25,10 @@
 		<property name="order" value="100" />
 	</bean>
 
+	<bean class="com.erinors.hpb.server.impl.ArrayHandler">
+		<property name="order" value="150" />
+	</bean>
+
 	<bean class="com.erinors.hpb.server.impl.SortedSetHandler">
 		<property name="order" value="200" />
 	</bean>
