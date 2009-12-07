@@ -19,6 +19,7 @@
     * BigInteger
   * java.util.Date
   * persistent Set, List, Map - lazy and eager as well
+  * arrays
 
 == Lazy entity references ==
 
