@@ -132,3 +132,4 @@ public class SetHandler extends AbstractPersistentObjectHandler
     }
 
 }
+// TODO handle unmodifiable, synchronized, etc collections as well
