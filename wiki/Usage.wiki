@@ -31,7 +31,7 @@ If you do not use a Maven repository manager then add the following directly to 
         <snapshots>
             <enabled>false</enabled>
         </snapshots>
-        <url>http://repository.codehaus.org</url>
+        <url>http://hibernate-pojo-bridge.googlecode.com/svn/maven-repository</url>
     </repository>
 </repositories>
 }}}
