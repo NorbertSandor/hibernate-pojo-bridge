@@ -19,6 +19,7 @@ package com.erinors.hpb.server.impl;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.hibernate.collection.PersistentCollection;
 import org.hibernate.collection.PersistentSet;
 
 import com.erinors.hpb.client.impl.UninitializedPersistentSet;
@@ -52,7 +53,7 @@ public class SetHandler extends AbstractPersistentObjectHandler
                     set.add(context.clone(element));
                 }
 
-                set.setDirty(false);
+                set.setDirty(((PersistentCollection) source).isDirty());
 
                 result = set;
             }

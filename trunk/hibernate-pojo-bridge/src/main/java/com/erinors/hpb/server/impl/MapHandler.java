@@ -19,6 +19,7 @@ package com.erinors.hpb.server.impl;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.hibernate.collection.PersistentCollection;
 import org.hibernate.collection.PersistentMap;
 
 import com.erinors.hpb.client.impl.UninitializedPersistentMap;
@@ -52,7 +53,7 @@ public class MapHandler extends AbstractPersistentObjectHandler
                     map.put(context.clone(entry.getKey()), context.clone(entry.getValue()));
                 }
 
-                map.setDirty(false);
+                map.setDirty(((PersistentCollection) source).isDirty());
 
                 result = map;
             }
