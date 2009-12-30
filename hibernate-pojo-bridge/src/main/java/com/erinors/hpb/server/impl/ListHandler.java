@@ -19,6 +19,7 @@ package com.erinors.hpb.server.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.collection.PersistentCollection;
 import org.hibernate.collection.PersistentList;
 
 import com.erinors.hpb.client.impl.UninitializedPersistentList;
@@ -52,7 +53,7 @@ public class ListHandler extends AbstractPersistentObjectHandler
                     list.add(context.clone(element));
                 }
 
-                list.setDirty(false);
+                list.setDirty(((PersistentCollection) source).isDirty());
 
                 result = list;
             }
