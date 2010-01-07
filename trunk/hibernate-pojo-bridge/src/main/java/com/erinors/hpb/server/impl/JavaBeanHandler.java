@@ -43,7 +43,7 @@ public class JavaBeanHandler extends AbstractPersistentObjectHandler
         {
             LazyInitializer lazyInitializer = ((HibernateProxy) object).getHibernateLazyInitializer();
 
-            if (!lazyInitializer.isUninitialized())
+            if (lazyInitializer.isUninitialized())
             {
                 throw new RuntimeException("Uninitialized proxies are not supported by this handler: " + object);
             }
