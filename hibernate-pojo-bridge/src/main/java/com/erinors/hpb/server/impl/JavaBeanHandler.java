@@ -49,6 +49,12 @@ public class JavaBeanHandler extends AbstractPersistentObjectHandler
             }
 
             effectiveObject = lazyInitializer.getImplementation();
+            
+            Object alreadyProcessedObject = context.getProcessedObject(effectiveObject);
+            if (alreadyProcessedObject != null)
+            {
+                return alreadyProcessedObject;
+            }
         }
         else
         {
