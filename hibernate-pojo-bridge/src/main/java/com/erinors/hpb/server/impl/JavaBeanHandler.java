@@ -24,6 +24,7 @@ import org.hibernate.proxy.HibernateProxy;
 import org.hibernate.proxy.LazyInitializer;
 
 import com.erinors.hpb.client.api.HibernateProxyPojoSupport;
+import com.erinors.hpb.client.api.IgnoreProperty;
 
 /**
  * @author Norbert Sándor
@@ -49,7 +50,7 @@ public class JavaBeanHandler extends AbstractPersistentObjectHandler
             }
 
             effectiveObject = lazyInitializer.getImplementation();
-            
+
             Object alreadyProcessedObject = context.getProcessedObject(effectiveObject);
             if (alreadyProcessedObject != null)
             {
@@ -107,7 +108,9 @@ public class JavaBeanHandler extends AbstractPersistentObjectHandler
 
         for (PropertyDescriptor pd : PropertyUtils.getPropertyDescriptors(object))
         {
-            if (pd.getWriteMethod() != null && pd.getReadMethod() != null)
+            if (pd.getWriteMethod() != null && pd.getReadMethod() != null
+                    && !pd.getWriteMethod().isAnnotationPresent(IgnoreProperty.class)
+                    && !pd.getReadMethod().isAnnotationPresent(IgnoreProperty.class))
             {
                 // TODO trace
 
