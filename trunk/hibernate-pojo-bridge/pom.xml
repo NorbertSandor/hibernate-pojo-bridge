@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<gwtVersion>2.0.3</gwtVersion>
+		<gwtVersion>2.0.4</gwtVersion>
 	</properties>
 	<groupId>com.erinors</groupId>
 	<artifactId>hibernate-pojo-bridge</artifactId>
