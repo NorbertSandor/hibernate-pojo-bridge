@@ -16,8 +16,9 @@
 
 package com.erinors.hpb.test;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -25,105 +26,100 @@ import java.util.regex.Pattern;
 
 import org.junit.Assert;
 
-import ch.qos.logback.core.WriterAppender;
+import ch.qos.logback.classic.spi.ILoggingEvent;
+import ch.qos.logback.core.CoreConstants;
+import ch.qos.logback.core.OutputStreamAppender;
 
-public class SqlAppender<E> extends WriterAppender<E>
-{
-    private static SqlAppender<?> INSTANCE;
+public class SqlAppender<E> extends OutputStreamAppender<E> {
+	private static SqlAppender<?> INSTANCE;
 
-    public static SqlAppender<?> get()
-    {
-        return INSTANCE;
-    }
+	public static SqlAppender<?> get() {
+		return INSTANCE;
+	}
 
-    private StringWriter writer = new StringWriter();
+	private ByteArrayOutputStream buffer = new ByteArrayOutputStream();
 
-    @Override
-    public void setName(String name)
-    {
-        super.setName(name);
-        INSTANCE = this;
-    }
+	@Override
+	public void setName(String name) {
+		super.setName(name);
+		INSTANCE = this;
+	}
 
-    @Override
-    public void start()
-    {
-        setWriter(writer);
-        super.start();
-    }
+	@Override
+	public void start() {
+		setOutputStream(buffer);
+		super.start();
+	}
 
-    public List<String> getSql()
-    {
-        List<String> executedSql = new ArrayList<String>();
+	public List<String> getSql() {
+		List<String> executedSql = new ArrayList<String>();
 
-        String currentSql = null;
-        List<String> currentArguments = new ArrayList<String>();
-        int argumentCount = 0;
-        for (String line : writer.toString().split("\\r\\n"))
-        {
-            if (line.startsWith("binding "))
-            {
-                assert currentSql != null;
-                assert argumentCount > 0;
+		String currentSql = null;
+		List<String> currentArguments = new ArrayList<String>();
+		int argumentCount = 0;
 
-                Matcher matcher = Pattern.compile("binding (.*) to parameter: (\\d+)").matcher(line);
-                if (matcher.matches())
-                {
-                    assert Integer.parseInt(matcher.group(2)) == currentArguments.size() + 1;
-                    currentArguments.add(matcher.group(1));
-                }
-                else
-                {
-                    Assert.fail("Internal error!");
-                }
+		String currentContent;
+		try {
+			currentContent = new String(buffer.toByteArray(), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			throw new RuntimeException(e);
+		}
 
-                if (argumentCount == currentArguments.size())
-                {
-                    String sql = currentSql;
-                    for (String argument : currentArguments)
-                    {
-                        sql = sql.replaceFirst("\\?", argument);
-                    }
+		for (String line : currentContent.split("\\r\\n")) {
+			if (line.startsWith("binding ")) {
+				assert currentSql != null;
+				assert argumentCount > 0;
 
-                    executedSql.add(sql);
-                    currentArguments.clear();
-                }
-            }
-            else if (line.startsWith("returning "))
-            {
-                Assert.fail();
-            }
-            else
-            {
-                currentSql = line;
-                argumentCount = 0;
-                int currentIndex = -1;
-                while ((currentIndex = currentSql.indexOf("?", currentIndex + 1)) != -1)
-                {
-                    argumentCount++;
-                }
+				Matcher matcher = Pattern.compile(
+						"binding (.*) to parameter: (\\d+)").matcher(line);
+				if (matcher.matches()) {
+					assert Integer.parseInt(matcher.group(2)) == currentArguments
+							.size() + 1;
+					currentArguments.add(matcher.group(1));
+				} else {
+					Assert.fail("Internal error!");
+				}
 
-                currentArguments.clear();
-            }
-        }
+				if (argumentCount == currentArguments.size()) {
+					String sql = currentSql;
+					for (String argument : currentArguments) {
+						sql = sql.replaceFirst("\\?", argument);
+					}
 
-        clearSql();
+					executedSql.add(sql);
+					currentArguments.clear();
+				}
+			} else if (line.startsWith("returning ")) {
+				Assert.fail();
+			} else {
+				currentSql = line;
+				argumentCount = 0;
+				int currentIndex = -1;
+				while ((currentIndex = currentSql
+						.indexOf("?", currentIndex + 1)) != -1) {
+					argumentCount++;
+				}
 
-        return executedSql;
-    }
+				currentArguments.clear();
+			}
+		}
 
-    @Override
-    protected void writerWrite(String s, boolean flush) throws IOException
-    {
-        if (!s.startsWith("returning "))
-        {
-            super.writerWrite(s, flush);
-        }
-    }
+		clearSql();
 
-    public void clearSql()
-    {
-        writer.getBuffer().setLength(0);
-    }
+		return executedSql;
+	}
+
+	protected void writeOut(E event) throws IOException {
+		assert event instanceof ILoggingEvent;
+		String val = ((ILoggingEvent) event).getMessage() +  CoreConstants.LINE_SEPARATOR;
+
+		if (!val.startsWith("returning ")) {
+			buffer.write(val.getBytes());
+		}
+	}
+
+	public void clearSql() {
+		buffer.reset();
+	}
 }
 // TODO what happens if the query itself contains a ? as static text?
