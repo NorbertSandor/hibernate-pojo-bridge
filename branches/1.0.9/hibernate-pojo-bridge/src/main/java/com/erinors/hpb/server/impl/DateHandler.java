@@ -16,8 +16,6 @@
 
 package com.erinors.hpb.server.impl;
 
-import java.util.Date;
-
 /**
  * @author Norbert Sándor
  */
@@ -37,9 +35,13 @@ public class DateHandler extends AbstractPersistentObjectHandler
 
     private Object copy(Object object)
     {
-        if (object instanceof Date)
+        if (object instanceof java.util.Date)
         {
-            return ((Date) object).clone();
+            return ((java.util.Date)object).clone();
+        }
+        else if (object instanceof java.sql.Date)
+        {
+            return ((java.sql.Date)object).clone();
         }
         else
         {
