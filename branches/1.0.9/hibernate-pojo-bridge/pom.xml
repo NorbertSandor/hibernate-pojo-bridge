@@ -8,6 +8,7 @@
 	<groupId>com.erinors</groupId>
 	<artifactId>hibernate-pojo-bridge</artifactId>
 	<version>1.0.10-SNAPSHOT</version>
+	
 	<name>Hibernate-POJO bridge</name>
 	<description>Performs recursive conversion between Hibernate managed entities and plain old Java objects.</description>
 	<organization>
@@ -23,6 +24,7 @@
 			</roles>
 		</developer>
 	</developers>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.hibernate</groupId>
