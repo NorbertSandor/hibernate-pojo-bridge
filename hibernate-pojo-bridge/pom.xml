@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<dependency.gwt.version>2.1.1</dependency.gwt.version>
+		<dependency.gwt.version>2.2.0</dependency.gwt.version>
 		<dependency.spring.version>3.0.5.RELEASE</dependency.spring.version>
 		<dependency.hibernate.version>3.6.0.Final</dependency.hibernate.version>
 		<dependency.slf4j.version>1.6.1</dependency.slf4j.version>
