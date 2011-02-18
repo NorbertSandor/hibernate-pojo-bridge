@@ -6,7 +6,7 @@
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
- *  
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -71,11 +71,11 @@ public class SqlAppender<E> extends OutputStreamAppender<E> {
 				assert argumentCount > 0;
 
 				Matcher matcher = Pattern.compile(
-						"binding (.*) to parameter: (\\d+)").matcher(line);
+						"binding parameter \\[(.*)\\] as \\[(.*)\\] - (\\d+)").matcher(line);
 				if (matcher.matches()) {
-					assert Integer.parseInt(matcher.group(2)) == currentArguments
+					assert Integer.parseInt(matcher.group(1)) == currentArguments
 							.size() + 1;
-					currentArguments.add(matcher.group(1));
+					currentArguments.add(matcher.group(3));
 				} else {
 					Assert.fail("Internal error!");
 				}
