@@ -6,7 +6,7 @@
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
- *  
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -36,11 +36,9 @@ public class CloningContextImpl extends AbstractContext implements CloningContex
             return null;
         }
 
-        Object alreadyCloned = getProcessedObject(object);
-
-        if (alreadyCloned != null)
+        if (isProcessed(object))
         {
-            return alreadyCloned;
+            return getProcessedObject(object);
         }
         else
         {
@@ -48,6 +46,9 @@ public class CloningContextImpl extends AbstractContext implements CloningContex
             for (PersistentObjectHandler handler : getHandlers())
             {
                 cloned = handler.clone(this, object);
+
+                // TODO handle PersistentObjectHandler.ProcessedToNull, see MergingContextImpl for implementation
+
                 if (cloned != null)
                 {
                     return cloned;
