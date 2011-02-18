@@ -16,7 +16,6 @@
 
 package com.erinors.hpb.server.impl;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -41,14 +40,6 @@ public class DateHandler extends AbstractPersistentObjectHandler
         if (object instanceof Date)
         {
             return ((Date) object).clone();
-        }
-        else if (object instanceof java.sql.Date)
-        {
-            return ((java.sql.Date) object).clone();
-        }
-        else if (object instanceof Timestamp)
-        {
-            return ((Timestamp) object).clone();
         }
         else
         {
