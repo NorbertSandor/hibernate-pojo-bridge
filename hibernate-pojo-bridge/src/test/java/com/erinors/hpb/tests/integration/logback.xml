@@ -7,7 +7,7 @@
 			<Pattern>%d{HH:mm:ss.SSS} %-5level %logger - %msg%n</Pattern>
     </layout>
   </appender>
-  
+
   <appender name="SQL" class="com.erinors.hpb.test.SqlAppender">
 		<layout class="ch.qos.logback.classic.PatternLayout">
 			<Pattern>%msg%n</Pattern>
@@ -17,17 +17,15 @@
   <root level="info">
     <appender-ref ref="STDOUT" />
   </root>
-  
+
   <logger name="org.hibernate.type" level="trace" additivity="false">
     <appender-ref ref="SQL" />
-  </logger>
-  
-  <logger name="org.hibernate.SQL" level="debug" additivity="false">
-    <appender-ref ref="SQL" />
-  </logger>
-  
-  <logger name="org.hibernate.type" level="trace" additivity="false">
     <appender-ref ref="STDOUT" />
   </logger>
-  
+
+  <logger name="org.hibernate.SQL" level="debug" additivity="false">
+    <appender-ref ref="SQL" />
+    <appender-ref ref="STDOUT" />
+  </logger>
+
 </configuration>

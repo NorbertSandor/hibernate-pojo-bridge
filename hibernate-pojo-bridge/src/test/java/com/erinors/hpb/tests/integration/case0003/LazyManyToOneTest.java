@@ -6,7 +6,7 @@
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
- *  
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -65,8 +65,8 @@ public class LazyManyToOneTest extends HpbIntegrationTestCase
         });
 
         Assert.assertEquals(Arrays.asList( //
-                "insert into Referenced (version, value, id) values ('0', '5', '101')", //
-                "insert into Parent (version, referenced_id, id) values ('0', '101', '100')" //
+                "insert into Referenced (version, value, id) values (0, 5, 101)", //
+                "insert into Parent (version, referenced_id, id) values (0, 101, 100)" //
         ), SqlAppender.get().getSql());
 
         //
@@ -109,7 +109,7 @@ public class LazyManyToOneTest extends HpbIntegrationTestCase
                 .assertTrue(sql
                         .get(0)
                         .matches(
-                                "select parent\\d+_\\.id as id\\d+_\\d+_, parent\\d+_\\.version as version\\d+_\\d+_, parent\\d+_\\.referenced_id as referenced\\d+_\\d+_\\d+_ from Parent parent\\d+_ where parent\\d+_\\.id='100'"));
+                                "select parent\\d+_\\.id as id\\d+_\\d+_, parent\\d+_\\.version as version\\d+_\\d+_, parent\\d+_\\.referenced_id as referenced\\d+_\\d+_\\d+_ from Parent parent\\d+_ where parent\\d+_\\.id=100"));
     }
 
     @Test
@@ -151,9 +151,9 @@ public class LazyManyToOneTest extends HpbIntegrationTestCase
         });
 
         Assert.assertEquals(Arrays.asList( //
-                "insert into Referenced (version, value, id) values ('0', '5', '101')", //
-                "insert into Parent (version, referenced_id, id) values ('0', '101', '100')", //
-                "insert into Referenced (version, value, id) values ('0', '7', '102')" //
+                "insert into Referenced (version, value, id) values (0, 5, 101)", //
+                "insert into Parent (version, referenced_id, id) values (0, 101, 100)", //
+                "insert into Referenced (version, value, id) values (0, 7, 102)" //
         ), SqlAppender.get().getSql());
 
         //
@@ -210,8 +210,8 @@ public class LazyManyToOneTest extends HpbIntegrationTestCase
                 .assertTrue(sql
                         .get(0)
                         .matches(
-                                "select parent\\d+_\\.id as id\\d+_\\d+_, parent\\d+_\\.version as version\\d+_\\d+_, parent\\d+_\\.referenced_id as referenced\\d+_\\d+_\\d+_, referenced\\d+_\\.id as id\\d+_\\d+_, referenced\\d+_\\.version as version\\d+_\\d+_, referenced\\d+_\\.value as value\\d+_\\d+_ from Parent parent\\d+_ left outer join Referenced referenced\\d+_ on parent\\d+_\\.referenced_id=referenced\\d+_\\.id where parent\\d+_\\.id='100'"));
+                                "select parent\\d+_\\.id as id\\d+_\\d+_, parent\\d+_\\.version as version\\d+_\\d+_, parent\\d+_\\.referenced_id as referenced\\d+_\\d+_\\d+_, referenced\\d+_\\.id as id\\d+_\\d+_, referenced\\d+_\\.version as version\\d+_\\d+_, referenced\\d+_\\.value as value\\d+_\\d+_ from Parent parent\\d+_ left outer join Referenced referenced\\d+_ on parent\\d+_\\.referenced_id=referenced\\d+_\\.id where parent\\d+_\\.id=100"));
         Assert.assertTrue(sql.get(1).matches(
-                "update Parent set version='1', referenced_id='102' where id='100' and version='0'"));
+                "update Parent set version=1, referenced_id=102 where id=100 and version=0"));
     }
 }
