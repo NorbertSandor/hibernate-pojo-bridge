@@ -20,7 +20,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import org.hibernate.engine.SessionImplementor;
+import org.hibernate.engine.spi.SessionImplementor;
 
 /**
  * @author Norbert Sándor

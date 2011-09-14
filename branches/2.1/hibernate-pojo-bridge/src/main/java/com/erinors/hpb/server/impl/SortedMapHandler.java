@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-import org.hibernate.collection.PersistentSortedMap;
+import org.hibernate.collection.internal.PersistentSortedMap;
 
 import com.erinors.hpb.client.impl.UninitializedPersistentSortedMap;
 

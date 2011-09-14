@@ -23,7 +23,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.MappingException;
 import org.hibernate.dialect.Dialect;
 import org.hibernate.dialect.Oracle10gDialect;
-import org.hibernate.engine.SessionImplementor;
+import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.type.Type;
 
 public class HibernateIdGenerator extends org.hibernate.id.SequenceGenerator

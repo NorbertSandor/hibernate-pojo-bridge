@@ -19,8 +19,8 @@ package com.erinors.hpb.server.impl;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.hibernate.collection.PersistentCollection;
-import org.hibernate.collection.PersistentSet;
+import org.hibernate.collection.internal.PersistentSet;
+import org.hibernate.collection.spi.PersistentCollection;
 
 import com.erinors.hpb.client.impl.UninitializedPersistentSet;
 
@@ -59,7 +59,7 @@ public class SetHandler extends AbstractPersistentObjectHandler
             }
             else
             {
-                result = new UninitializedPersistentSet();
+                result = new UninitializedPersistentSet<Object>();
                 context.addProcessedObject(object, result);
             }
         }

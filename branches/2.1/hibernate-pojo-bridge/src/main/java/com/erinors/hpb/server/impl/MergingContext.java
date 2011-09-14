@@ -18,7 +18,7 @@ package com.erinors.hpb.server.impl;
 
 import javax.persistence.EntityManager;
 
-import org.hibernate.engine.SessionImplementor;
+import org.hibernate.engine.spi.SessionImplementor;
 
 /**
  * @author Norbert Sándor

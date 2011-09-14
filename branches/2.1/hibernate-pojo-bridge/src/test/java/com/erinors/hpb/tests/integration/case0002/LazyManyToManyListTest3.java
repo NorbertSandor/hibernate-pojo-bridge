@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.hibernate.collection.PersistentList;
+import org.hibernate.collection.internal.PersistentList;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Test;
