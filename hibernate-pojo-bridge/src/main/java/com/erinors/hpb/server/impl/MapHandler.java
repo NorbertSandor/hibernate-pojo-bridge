@@ -19,8 +19,8 @@ package com.erinors.hpb.server.impl;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.hibernate.collection.PersistentCollection;
-import org.hibernate.collection.PersistentMap;
+import org.hibernate.collection.internal.PersistentMap;
+import org.hibernate.collection.spi.PersistentCollection;
 
 import com.erinors.hpb.client.impl.UninitializedPersistentMap;
 

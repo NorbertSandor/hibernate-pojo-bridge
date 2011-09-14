@@ -19,7 +19,7 @@ package com.erinors.hpb.server.impl;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import org.hibernate.collection.PersistentSortedSet;
+import org.hibernate.collection.internal.PersistentSortedSet;
 
 import com.erinors.hpb.client.impl.UninitializedPersistentSortedSet;
 

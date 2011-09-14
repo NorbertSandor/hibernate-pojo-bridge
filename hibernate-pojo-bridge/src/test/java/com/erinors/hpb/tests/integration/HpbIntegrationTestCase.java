@@ -34,8 +34,7 @@ public abstract class HpbIntegrationTestCase
     {
         System.setProperty("persistenceXmlLocation", getClass().getPackage().getName().replace('.', '/')
                 + "/persistence.xml");
-        applicationContext = new ClassPathXmlApplicationContext(
-                new String[] { getSpringConfig() });
+        applicationContext = new ClassPathXmlApplicationContext(new String[] { getSpringConfig() });
 
         SqlAppender.get().clearSql();
     }

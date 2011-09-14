@@ -19,7 +19,7 @@ package com.erinors.hpb.tests.integration.case0001;
 import java.util.Arrays;
 import java.util.List;
 
-import org.hibernate.collection.PersistentSet;
+import org.hibernate.collection.internal.PersistentSet;
 import org.junit.Assert;
 import org.junit.Test;
 

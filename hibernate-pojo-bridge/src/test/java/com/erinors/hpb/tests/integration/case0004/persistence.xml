@@ -15,5 +15,6 @@
 			<property name="hibernate.ejb.interceptor.session_scoped"
 				value="com.erinors.hpb.tests.integration.HibernateInterceptor" />
 		</properties>
+		<validation-mode>NONE</validation-mode>
 	</persistence-unit>
 </persistence>
