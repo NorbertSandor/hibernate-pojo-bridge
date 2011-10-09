@@ -122,6 +122,13 @@
 			<version>${dependency.logback.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		<!-- Temporary, see https://issues.jboss.org/browse/JBLOGGING-65 -->
+		<dependency>
+			<groupId>org.jboss.logging</groupId>
+			<artifactId>jboss-logging</artifactId>
+			<version>3.0.1.GA</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<resources>
