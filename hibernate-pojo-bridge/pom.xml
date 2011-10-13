@@ -5,9 +5,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<dependency.gwt.version>2.4.0</dependency.gwt.version>
 		<dependency.spring.version>3.0.6.RELEASE</dependency.spring.version>
-		<dependency.hibernate.version>4.0.0.CR2</dependency.hibernate.version>
-		<dependency.slf4j.version>1.6.1</dependency.slf4j.version>
-		<dependency.logback.version>0.9.29</dependency.logback.version>
+		<dependency.hibernate.version>4.0.0.CR4</dependency.hibernate.version>
+		<dependency.slf4j.version>1.6.2</dependency.slf4j.version>
+		<dependency.logback.version>0.9.30</dependency.logback.version>
 	</properties>
 	<groupId>com.erinors</groupId>
 	<artifactId>hibernate-pojo-bridge</artifactId>
