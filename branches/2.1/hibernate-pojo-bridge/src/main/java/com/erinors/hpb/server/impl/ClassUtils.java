@@ -1,13 +1,21 @@
 package com.erinors.hpb.server.impl;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.List;
 
 import org.springframework.util.ReflectionUtils;
 
 public class ClassUtils
 {
-    public static Constructor<?> getAccessibleNoArgConstructor(Class<?> clazz)
+    public static Constructor<?> getAccessibleInstanceConstructor(Class<?> clazz)
     {
+        if (clazz.getEnclosingClass() != null && (clazz.getModifiers() & Modifier.STATIC) == 0)
+        {
+            throw new UnsupportedOperationException("Inner classes are not supported: " + clazz);
+        }
+
         Constructor<?> constructor;
         try
         {
@@ -22,6 +30,23 @@ public class ClassUtils
 
         return constructor;
 
+    }
+
+    // TODO cache
+    public static void collectCloneableFields(Class<?> clazz, List<Field> fields)
+    {
+        for (Field field : clazz.getDeclaredFields())
+        {
+            if ((field.getModifiers() & Modifier.STATIC) == 0)
+            {
+                fields.add(field);
+            }
+        }
+
+        if (clazz.getSuperclass() != null)
+        {
+            collectCloneableFields(clazz.getSuperclass(), fields);
+        }
     }
 
     private ClassUtils()
