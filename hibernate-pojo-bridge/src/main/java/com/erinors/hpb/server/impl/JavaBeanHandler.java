@@ -16,15 +16,16 @@
 
 package com.erinors.hpb.server.impl;
 
-import java.beans.PropertyDescriptor;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.util.LinkedList;
+import java.util.List;
 
-import org.apache.commons.beanutils.PropertyUtils;
 import org.hibernate.proxy.HibernateProxy;
 import org.hibernate.proxy.LazyInitializer;
+import org.springframework.util.ReflectionUtils;
 
 import com.erinors.hpb.client.api.HibernateProxyPojoSupport;
-import com.erinors.hpb.client.api.IgnoreProperty;
 
 /**
  * @author Norbert Sándor
@@ -93,10 +94,12 @@ public class JavaBeanHandler extends AbstractPersistentObjectHandler
 
     private Object copyBean(Object object, ObjectCopier objectCopier, Context context)
     {
+        Class<?> clazz = object.getClass();
+
         Object result;
         try
         {
-            Constructor<?> constructor = ClassUtils.getAccessibleNoArgConstructor(object.getClass());
+            Constructor<?> constructor = ClassUtils.getAccessibleInstanceConstructor(clazz);
             result = constructor.newInstance();
         }
         catch (Exception e)
@@ -106,28 +109,22 @@ public class JavaBeanHandler extends AbstractPersistentObjectHandler
 
         context.addProcessedObject(object, result);
 
-        for (PropertyDescriptor pd : PropertyUtils.getPropertyDescriptors(object))
-        {
-            if (pd.getWriteMethod() != null && pd.getReadMethod() != null
-                    && !pd.getWriteMethod().isAnnotationPresent(IgnoreProperty.class)
-                    && !pd.getReadMethod().isAnnotationPresent(IgnoreProperty.class))
-            {
-                // TODO trace
+        List<Field> fields = new LinkedList<Field>();
+        ClassUtils.collectCloneableFields(clazz, fields);
 
-                try
-                {
-                    Object value = PropertyUtils.getSimpleProperty(object, pd.getName());
-                    Object processedValue = objectCopier.processObject(value);
-                    PropertyUtils.setProperty(result, pd.getName(), processedValue);
-                }
-                catch (Exception e)
-                {
-                    throw new RuntimeException("Cannot copy property " + pd.getName() + " of " + object, e);
-                }
-            }
-            else
+        for (Field field : fields)
+        {
+            try
             {
-                // TODO trace
+                ReflectionUtils.makeAccessible(field);
+
+                Object fieldValue = field.get(object);
+                Object processedFieldValue = objectCopier.processObject(fieldValue);
+                field.set(result, processedFieldValue);
+            }
+            catch (Exception e)
+            {
+                throw new RuntimeException("Cannot copy field: " + field, e);
             }
         }
 

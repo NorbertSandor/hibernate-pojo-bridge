@@ -67,7 +67,7 @@ public class UninitializedHibernateProxyHandler extends AbstractPersistentObject
         HibernateProxyPojoSupport result;
         try
         {
-            Constructor<?> constructor = ClassUtils.getAccessibleNoArgConstructor(persistentClass);
+            Constructor<?> constructor = ClassUtils.getAccessibleInstanceConstructor(persistentClass);
             result = (HibernateProxyPojoSupport) constructor.newInstance();
         }
         catch (Exception e)

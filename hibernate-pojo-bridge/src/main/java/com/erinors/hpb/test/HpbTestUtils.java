@@ -16,9 +16,14 @@
 
 package com.erinors.hpb.test;
 
+import java.lang.reflect.Field;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Assert;
+import org.springframework.util.ReflectionUtils;
+
+import com.erinors.hpb.server.impl.ClassUtils;
 
 public class HpbTestUtils
 {
@@ -37,6 +42,43 @@ public class HpbTestUtils
             if ((!s1.startsWith("select") || !s2.startsWith("select")) && !s1.equals(s2))
             {
                 Assert.fail();
+            }
+        }
+    }
+
+    private static boolean equal(Object a, Object b)
+    {
+        return a == b || (a != null && a.equals(b));
+    }
+
+    public static void assertEqualsByCloneableFields(Object o1, Object o2)
+    {
+        if (o1 == null || o2 == null || o1.getClass() != o2.getClass())
+        {
+            throw new IllegalArgumentException("Non-null objects of same class expected but got: " + o1 + ", " + o2);
+        }
+
+        List<Field> fields = new LinkedList<Field>();
+        ClassUtils.collectCloneableFields(o1.getClass(), fields);
+
+        for (Field field : fields)
+        {
+            try
+            {
+                ReflectionUtils.makeAccessible(field);
+
+                Object fieldValue1 = field.get(o1);
+                Object fieldValue2 = field.get(o2);
+
+                if (!equal(fieldValue1, fieldValue2))
+                {
+                    throw new AssertionError("Field value mismatch: " + field + ", value1=" + fieldValue1 + ", value2="
+                            + fieldValue2);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new RuntimeException("Cannot copy field: " + field, e);
             }
         }
     }
