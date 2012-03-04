@@ -37,7 +37,8 @@ public class ClassUtils
     {
         for (Field field : clazz.getDeclaredFields())
         {
-            if ((field.getModifiers() & Modifier.STATIC) == 0)
+            int fieldModifiers = field.getModifiers();
+            if ((fieldModifiers & Modifier.STATIC) == 0 && (fieldModifiers & Modifier.TRANSIENT) == 0)
             {
                 fields.add(field);
             }
