@@ -67,7 +67,7 @@ public class UninitializedHibernateProxyHandler extends AbstractPersistentObject
         HibernateProxyPojoSupport result;
         try
         {
-            Constructor<?> constructor = ClassUtils.getAccessibleNoArgConstructor(persistentClass);
+            Constructor<?> constructor = ClassUtils.getAccessibleInstanceConstructor(persistentClass);
             result = (HibernateProxyPojoSupport) constructor.newInstance();
         }
         catch (Exception e)
@@ -78,6 +78,8 @@ public class UninitializedHibernateProxyHandler extends AbstractPersistentObject
         result.setUninitializedHibernateProxy(true);
         result.setUninitializedHibernateProxyId(lazyInitializer.getIdentifier());
 
+        context.addProcessedObject(object, result);
+        
         return result;
     }
 
@@ -106,6 +108,8 @@ public class UninitializedHibernateProxyHandler extends AbstractPersistentObject
 
         Object result = context.getEntityManager().getReference(object.getClass(),
                 hpgs.getUninitializedHibernateProxyId());
+
+        context.addProcessedObject(object, result);
 
         return result;
     }

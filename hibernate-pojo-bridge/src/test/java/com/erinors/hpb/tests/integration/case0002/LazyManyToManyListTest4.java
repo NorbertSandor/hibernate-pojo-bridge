@@ -6,7 +6,7 @@
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
- *  
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.hibernate.collection.PersistentList;
+import org.hibernate.collection.internal.PersistentList;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Test;
@@ -80,13 +80,13 @@ public class LazyManyToManyListTest4 extends HpbIntegrationTestCase
             }
         });
 
-        Assert.assertEquals(Arrays.asList("insert into Parent (version, id) values ('0', '100')",
-                "insert into Child (version, value, id) values ('0', '0', '101')",
-                "insert into Child (version, value, id) values ('0', '1', '102')",
-                "insert into Child (version, value, id) values ('0', '2', '103')",
-                "insert into Parent_Child (Parent_id, childIndex, children_id) values ('100', '0', '101')",
-                "insert into Parent_Child (Parent_id, childIndex, children_id) values ('100', '1', '102')",
-                "insert into Parent_Child (Parent_id, childIndex, children_id) values ('100', '2', '103')"),
+        Assert.assertEquals(Arrays.asList("insert into Parent (version, id) values (0, 100)",
+                "insert into Child (version, value, id) values (0, 0, 101)",
+                "insert into Child (version, value, id) values (0, 1, 102)",
+                "insert into Child (version, value, id) values (0, 2, 103)",
+                "insert into Parent_Child (Parent_id, childIndex, children_id) values (100, 0, 101)",
+                "insert into Parent_Child (Parent_id, childIndex, children_id) values (100, 1, 102)",
+                "insert into Parent_Child (Parent_id, childIndex, children_id) values (100, 2, 103)"),
                 SqlAppender.get().getSql());
 
         //
@@ -128,7 +128,7 @@ public class LazyManyToManyListTest4 extends HpbIntegrationTestCase
         List<String> sql = SqlAppender.get().getSql();
         Assert.assertEquals(3, sql.size());
         Assert.assertTrue(sql.get(0).startsWith("select"));
-        Assert.assertEquals("update Parent set version='1' where id='100' and version='0'", sql.get(1));
-        Assert.assertEquals("delete from Parent_Child where Parent_id='100'", sql.get(2));
+        Assert.assertEquals("update Parent set version=1 where id=100 and version=0", sql.get(1));
+        Assert.assertEquals("delete from Parent_Child where Parent_id=100", sql.get(2));
     }
 }

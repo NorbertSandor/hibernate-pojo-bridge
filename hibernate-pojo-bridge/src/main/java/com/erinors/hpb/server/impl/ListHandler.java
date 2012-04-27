@@ -19,8 +19,8 @@ package com.erinors.hpb.server.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.collection.PersistentCollection;
-import org.hibernate.collection.PersistentList;
+import org.hibernate.collection.internal.PersistentList;
+import org.hibernate.collection.spi.PersistentCollection;
 
 import com.erinors.hpb.client.impl.UninitializedPersistentList;
 
@@ -59,7 +59,7 @@ public class ListHandler extends AbstractPersistentObjectHandler
             }
             else
             {
-                result = new UninitializedPersistentList();
+                result = new UninitializedPersistentList<Object>();
                 context.addProcessedObject(object, result);
             }
         }

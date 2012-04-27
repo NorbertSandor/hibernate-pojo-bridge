@@ -6,7 +6,7 @@
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
- *  
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -20,7 +20,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import org.hibernate.engine.SessionImplementor;
+import org.hibernate.engine.spi.SessionImplementor;
 
 /**
  * @author Norbert Sándor
@@ -43,11 +43,9 @@ public class MergingContextImpl extends AbstractContext implements MergingContex
             return null;
         }
 
-        Object alreadyCloned = getProcessedObject(object);
-
-        if (alreadyCloned != null)
+        if (isProcessed(object))
         {
-            return alreadyCloned;
+            return getProcessedObject(object);
         }
         else
         {
@@ -55,7 +53,12 @@ public class MergingContextImpl extends AbstractContext implements MergingContex
             for (PersistentObjectHandler handler : getHandlers())
             {
                 merged = handler.merge(this, object);
-                if (merged != null)
+
+                if (merged == PersistentObjectHandler.ProcessedToNull)
+                {
+                    return null;
+                }
+                else if (merged != null)
                 {
                     return merged;
                 }

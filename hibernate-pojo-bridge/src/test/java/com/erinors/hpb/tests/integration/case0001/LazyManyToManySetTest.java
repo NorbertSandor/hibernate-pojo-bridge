@@ -6,7 +6,7 @@
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
- *  
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,7 +19,7 @@ package com.erinors.hpb.tests.integration.case0001;
 import java.util.Arrays;
 import java.util.List;
 
-import org.hibernate.collection.PersistentSet;
+import org.hibernate.collection.internal.PersistentSet;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -65,13 +65,13 @@ public class LazyManyToManySetTest extends HpbIntegrationTestCase
             }
         });
 
-        Assert.assertEquals(Arrays.asList("insert into Parent (version, id) values ('0', '100')",
-                "insert into Child (version, value, id) values ('0', '1', '102')",
-                "insert into Child (version, value, id) values ('0', '2', '103')",
-                "insert into Child (version, value, id) values ('0', '0', '101')",
-                "insert into Parent_Child (Parent_id, children_id) values ('100', '102')",
-                "insert into Parent_Child (Parent_id, children_id) values ('100', '103')",
-                "insert into Parent_Child (Parent_id, children_id) values ('100', '101')"), SqlAppender.get().getSql());
+        Assert.assertEquals(Arrays.asList("insert into Parent (version, id) values (0, 100)",
+                "insert into Child (version, value, id) values (0, 1, 102)",
+                "insert into Child (version, value, id) values (0, 2, 103)",
+                "insert into Child (version, value, id) values (0, 0, 101)",
+                "insert into Parent_Child (Parent_id, children_id) values (100, 102)",
+                "insert into Parent_Child (Parent_id, children_id) values (100, 103)",
+                "insert into Parent_Child (Parent_id, children_id) values (100, 101)"), SqlAppender.get().getSql());
 
         //
         // Check laziness
@@ -111,7 +111,7 @@ public class LazyManyToManySetTest extends HpbIntegrationTestCase
         });
 
         List<String> sql = SqlAppender.get().getSql();
-        Assert.assertEquals("update Parent set version='1' where id='100' and version='0'", sql.get(1));
-        Assert.assertEquals("delete from Parent_Child where Parent_id='100' and children_id='102'", sql.get(2));
+        Assert.assertEquals("update Parent set version=1 where id=100 and version=0", sql.get(1));
+        Assert.assertEquals("delete from Parent_Child where Parent_id=100 and children_id=102", sql.get(2));
     }
 }
