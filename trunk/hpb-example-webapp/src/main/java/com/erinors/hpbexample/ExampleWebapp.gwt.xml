@@ -1,7 +1,0 @@
-<module>
-	<inherits name="com.google.gwt.user.User" />
-	<inherits name="com.erinors.hpb.HibernatePojoBridge" />
-
-	<source path="client" />
-	<entry-point class="com.erinors.hpbexample.client.ExampleWebapp" />
-</module>
