@@ -22,7 +22,7 @@ import java.util.List;
 import org.hibernate.collection.internal.PersistentList;
 import org.hibernate.collection.spi.PersistentCollection;
 
-import com.erinors.hpb.client.impl.UninitializedPersistentList;
+import com.erinors.hpb.shared.impl.UninitializedPersistentList;
 
 /**
  * @author Norbert Sándor
@@ -44,7 +44,7 @@ public class ListHandler extends AbstractPersistentObjectHandler
         {
             if (((PersistentList) source).wasInitialized())
             {
-                com.erinors.hpb.client.impl.PersistentList<Object> list = new com.erinors.hpb.client.impl.PersistentList<Object>(
+                com.erinors.hpb.shared.impl.PersistentList<Object> list = new com.erinors.hpb.shared.impl.PersistentList<Object>(
                         source.size());
                 context.addProcessedObject(object, list);
 
@@ -95,7 +95,7 @@ public class ListHandler extends AbstractPersistentObjectHandler
             result = new PersistentList(context.getSessionImplementor());
             context.addProcessedObject(object, result);
         }
-        else if (source instanceof com.erinors.hpb.client.impl.PersistentList)
+        else if (source instanceof com.erinors.hpb.shared.impl.PersistentList)
         {
             PersistentList list = new PersistentList(context.getSessionImplementor(), new ArrayList<Object>());
             context.addProcessedObject(object, list);
@@ -105,7 +105,7 @@ public class ListHandler extends AbstractPersistentObjectHandler
                 list.add(context.merge(element));
             }
 
-            if (((com.erinors.hpb.client.impl.PersistentList<?>) source).isDirty())
+            if (((com.erinors.hpb.shared.impl.PersistentList<?>) source).isDirty())
             {
                 list.dirty();
             }

@@ -1,4 +1,4 @@
-package com.erinors.hpb.client.api;
+package com.erinors.hpb.shared.api;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

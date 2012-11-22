@@ -22,7 +22,7 @@ import java.util.Map;
 import org.hibernate.collection.internal.PersistentMap;
 import org.hibernate.collection.spi.PersistentCollection;
 
-import com.erinors.hpb.client.impl.UninitializedPersistentMap;
+import com.erinors.hpb.shared.impl.UninitializedPersistentMap;
 
 /**
  * @author Norbert Sándor
@@ -44,7 +44,7 @@ public class MapHandler extends AbstractPersistentObjectHandler
         {
             if (((PersistentMap) source).wasInitialized())
             {
-                com.erinors.hpb.client.impl.PersistentMap<Object, Object> map = new com.erinors.hpb.client.impl.PersistentMap<Object, Object>(
+                com.erinors.hpb.shared.impl.PersistentMap<Object, Object> map = new com.erinors.hpb.shared.impl.PersistentMap<Object, Object>(
                         source.size());
                 context.addProcessedObject(object, map);
 
@@ -95,7 +95,7 @@ public class MapHandler extends AbstractPersistentObjectHandler
             result = new PersistentMap(context.getSessionImplementor());
             context.addProcessedObject(object, result);
         }
-        else if (source instanceof com.erinors.hpb.client.impl.PersistentMap)
+        else if (source instanceof com.erinors.hpb.shared.impl.PersistentMap)
         {
             PersistentMap map = new PersistentMap(context.getSessionImplementor(), new HashMap<Object, Object>());
             context.addProcessedObject(object, map);
@@ -105,7 +105,7 @@ public class MapHandler extends AbstractPersistentObjectHandler
                 map.put(context.merge(entry.getKey()), context.merge(entry.getValue()));
             }
 
-            if (((com.erinors.hpb.client.impl.PersistentMap<?, ?>) source).isDirty())
+            if (((com.erinors.hpb.shared.impl.PersistentMap<?, ?>) source).isDirty())
             {
                 map.dirty();
             }

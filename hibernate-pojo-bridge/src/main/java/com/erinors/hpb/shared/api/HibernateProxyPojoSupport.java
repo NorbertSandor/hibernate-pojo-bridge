@@ -13,16 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package com.erinors.hpb.client.impl;
-
-import java.io.Serializable;
-import java.util.Set;
+package com.erinors.hpb.shared.api;
 
 /**
  * @author Norbert Sándor
  */
-public class UninitializedPersistentSet<E> extends UninitializedPersistentCollection<E> implements Set<E>, Serializable
+public interface HibernateProxyPojoSupport
 {
-    private static final long serialVersionUID = 1L;
+    boolean isUninitializedHibernateProxy();
+
+    void setUninitializedHibernateProxy(boolean value);
+
+    // TODO remove this property and store the proxy id in the id property of the object
+    Object getUninitializedHibernateProxyId();
+
+    void setUninitializedHibernateProxyId(Object id);
 }

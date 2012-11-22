@@ -14,51 +14,56 @@
  * limitations under the License.
  */
 
-package com.erinors.hpb.client.impl;
+package com.erinors.hpb.shared.impl;
 
 import java.util.Collection;
 import java.util.Comparator;
-import java.util.Map;
-import java.util.Set;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.Iterator;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 /**
  * @author Norbert Sándor
  */
-public class UninitializedPersistentSortedMap<K, V> extends TreeMap<K, V>
+public class UninitializedPersistentSortedSet<E> extends TreeSet<E>
 {
     private static final long serialVersionUID = 1L;
 
-    protected static final String ERROR_MESSAGE = "Uninitialized collections should not be accessed.";
+    private static final String ERROR_MESSAGE = "Uninitialized collections should not be accessed.";
 
-    public UninitializedPersistentSortedMap()
+    public UninitializedPersistentSortedSet()
     {
     }
 
-    public UninitializedPersistentSortedMap(Map<? extends K, ? extends V> m)
+    public UninitializedPersistentSortedSet(Collection<? extends E> c)
     {
-        super(m);
+        super(c);
     }
 
-    public UninitializedPersistentSortedMap(SortedMap<K, ? extends V> m)
-    {
-        super(m);
-    }
-
-    public UninitializedPersistentSortedMap(Comparator<? super Object> comparator)
+    public UninitializedPersistentSortedSet(Comparator<? super E> comparator)
     {
         super(comparator);
     }
 
-    // @Override
-    public java.util.Map.Entry<K, V> ceilingEntry(K key)
+    public UninitializedPersistentSortedSet(SortedSet<E> s)
+    {
+        super(s);
+    }
+
+    @Override
+    public boolean add(E e)
+    {
+        throw new UnsupportedOperationException(ERROR_MESSAGE);
+    }
+
+    @Override
+    public boolean addAll(Collection<? extends E> c)
     {
         throw new UnsupportedOperationException(ERROR_MESSAGE);
     }
 
     // @Override
-    public K ceilingKey(K key)
+    public E ceiling(E e)
     {
         throw new UnsupportedOperationException(ERROR_MESSAGE);
     }
@@ -76,154 +81,97 @@ public class UninitializedPersistentSortedMap<K, V> extends TreeMap<K, V>
     }
 
     @Override
-    public Comparator<? super K> comparator()
+    public Comparator<? super E> comparator()
     {
         return super.comparator();
     }
 
     @Override
-    public boolean containsKey(Object key)
-    {
-        throw new UnsupportedOperationException(ERROR_MESSAGE);
-    }
-
-    @Override
-    public boolean containsValue(Object value)
+    public boolean contains(Object o)
     {
         throw new UnsupportedOperationException(ERROR_MESSAGE);
     }
 
     // @Override
-    // public NavigableSet<K> descendingKeySet()
+    public Iterator<E> descendingIterator()
+    {
+        throw new UnsupportedOperationException(ERROR_MESSAGE);
+    }
+
+    // @Override
+    // public NavigableSet<E> descendingSet()
     // {
     // throw new UnsupportedOperationException(ERROR_MESSAGE);
     // }
 
+    @Override
+    public E first()
+    {
+        throw new UnsupportedOperationException(ERROR_MESSAGE);
+    }
+
     // @Override
-    // public NavigableMap<K, V> descendingMap() {
+    public E floor(E e)
+    {
+        throw new UnsupportedOperationException(ERROR_MESSAGE);
+    }
+
+    // @Override
+    // public NavigableSet<E> headSet(E toElement, boolean inclusive)
+    // {
     // throw new UnsupportedOperationException(ERROR_MESSAGE);
     // }
 
     @Override
-    public Set<java.util.Map.Entry<K, V>> entrySet()
+    public SortedSet<E> headSet(E toElement)
     {
         throw new UnsupportedOperationException(ERROR_MESSAGE);
     }
 
     // @Override
-    public java.util.Map.Entry<K, V> firstEntry()
+    public E higher(E e)
     {
         throw new UnsupportedOperationException(ERROR_MESSAGE);
     }
 
     @Override
-    public K firstKey()
-    {
-        throw new UnsupportedOperationException(ERROR_MESSAGE);
-    }
-
-    // @Override
-    public java.util.Map.Entry<K, V> floorEntry(K key)
-    {
-        throw new UnsupportedOperationException(ERROR_MESSAGE);
-    }
-
-    // @Override
-    public K floorKey(K key)
+    public boolean isEmpty()
     {
         throw new UnsupportedOperationException(ERROR_MESSAGE);
     }
 
     @Override
-    public V get(Object key)
-    {
-        throw new UnsupportedOperationException(ERROR_MESSAGE);
-    }
-
-    // @Override
-    // public NavigableMap<K, V> headMap(K toKey, boolean inclusive) {
-    // throw new UnsupportedOperationException(ERROR_MESSAGE);
-    // }
-
-    @Override
-    public SortedMap<K, V> headMap(K toKey)
-    {
-        throw new UnsupportedOperationException(ERROR_MESSAGE);
-    }
-
-    // @Override
-    public java.util.Map.Entry<K, V> higherEntry(K key)
-    {
-        throw new UnsupportedOperationException(ERROR_MESSAGE);
-    }
-
-    // @Override
-    public K higherKey(K key)
+    public Iterator<E> iterator()
     {
         throw new UnsupportedOperationException(ERROR_MESSAGE);
     }
 
     @Override
-    public Set<K> keySet()
+    public E last()
     {
         throw new UnsupportedOperationException(ERROR_MESSAGE);
     }
 
     // @Override
-    public java.util.Map.Entry<K, V> lastEntry()
+    public E lower(E e)
+    {
+        throw new UnsupportedOperationException(ERROR_MESSAGE);
+    }
+
+    // @Override
+    public E pollFirst()
+    {
+        throw new UnsupportedOperationException(ERROR_MESSAGE);
+    }
+
+    // @Override
+    public E pollLast()
     {
         throw new UnsupportedOperationException(ERROR_MESSAGE);
     }
 
     @Override
-    public K lastKey()
-    {
-        throw new UnsupportedOperationException(ERROR_MESSAGE);
-    }
-
-    // @Override
-    public java.util.Map.Entry<K, V> lowerEntry(K key)
-    {
-        throw new UnsupportedOperationException(ERROR_MESSAGE);
-    }
-
-    // @Override
-    public K lowerKey(K key)
-    {
-        throw new UnsupportedOperationException(ERROR_MESSAGE);
-    }
-
-    // @Override
-    // public NavigableSet<K> navigableKeySet() {
-    // throw new UnsupportedOperationException(ERROR_MESSAGE);
-    // }
-
-    // @Override
-    public java.util.Map.Entry<K, V> pollFirstEntry()
-    {
-        throw new UnsupportedOperationException(ERROR_MESSAGE);
-    }
-
-    // @Override
-    public java.util.Map.Entry<K, V> pollLastEntry()
-    {
-        throw new UnsupportedOperationException(ERROR_MESSAGE);
-    }
-
-    @Override
-    public V put(K key, V value)
-    {
-        throw new UnsupportedOperationException(ERROR_MESSAGE);
-    }
-
-    @Override
-    public void putAll(Map<? extends K, ? extends V> map)
-    {
-        throw new UnsupportedOperationException(ERROR_MESSAGE);
-    }
-
-    @Override
-    public V remove(Object key)
+    public boolean remove(Object o)
     {
         throw new UnsupportedOperationException(ERROR_MESSAGE);
     }
@@ -235,29 +183,23 @@ public class UninitializedPersistentSortedMap<K, V> extends TreeMap<K, V>
     }
 
     // @Override
-    // public NavigableMap<K, V> subMap(K fromKey, boolean fromInclusive, K toKey, boolean toInclusive) {
+    // public NavigableSet<E> subSet(E fromElement, boolean fromInclusive, E toElement, boolean toInclusive) {
     // throw new UnsupportedOperationException(ERROR_MESSAGE);
     // }
 
     @Override
-    public SortedMap<K, V> subMap(K fromKey, K toKey)
+    public SortedSet<E> subSet(E fromElement, E toElement)
     {
         throw new UnsupportedOperationException(ERROR_MESSAGE);
     }
 
     // @Override
-    // public NavigableMap<K, V> tailMap(K fromKey, boolean inclusive) {
+    // public NavigableSet<E> tailSet(E fromElement, boolean inclusive) {
     // throw new UnsupportedOperationException(ERROR_MESSAGE);
     // }
 
     @Override
-    public SortedMap<K, V> tailMap(K fromKey)
-    {
-        throw new UnsupportedOperationException(ERROR_MESSAGE);
-    }
-
-    @Override
-    public Collection<V> values()
+    public SortedSet<E> tailSet(E fromElement)
     {
         throw new UnsupportedOperationException(ERROR_MESSAGE);
     }
@@ -275,7 +217,31 @@ public class UninitializedPersistentSortedMap<K, V> extends TreeMap<K, V>
     }
 
     @Override
-    public boolean isEmpty()
+    public boolean removeAll(Collection<?> c)
+    {
+        throw new UnsupportedOperationException(ERROR_MESSAGE);
+    }
+
+    @Override
+    public boolean containsAll(Collection<?> c)
+    {
+        throw new UnsupportedOperationException(ERROR_MESSAGE);
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> c)
+    {
+        throw new UnsupportedOperationException(ERROR_MESSAGE);
+    }
+
+    @Override
+    public Object[] toArray()
+    {
+        throw new UnsupportedOperationException(ERROR_MESSAGE);
+    }
+
+    @Override
+    public <T> T[] toArray(T[] a)
     {
         throw new UnsupportedOperationException(ERROR_MESSAGE);
     }

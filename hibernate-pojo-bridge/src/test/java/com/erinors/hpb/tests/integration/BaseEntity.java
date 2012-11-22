@@ -27,7 +27,7 @@ import javax.persistence.Version;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.erinors.hpb.client.api.HibernateProxyPojoSupportImpl;
+import com.erinors.hpb.shared.api.HibernateProxyPojoSupportImpl;
 
 @SuppressWarnings("serial")
 @MappedSuperclass
