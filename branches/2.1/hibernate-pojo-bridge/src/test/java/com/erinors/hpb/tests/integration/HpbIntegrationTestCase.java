@@ -23,7 +23,7 @@ import org.junit.Before;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.erinors.hpb.server.api.PersistentObjectManager;
-import com.erinors.hpb.test.SqlAppender;
+import com.erinors.hpb.tests.SqlAppender;
 
 public abstract class HpbIntegrationTestCase
 {

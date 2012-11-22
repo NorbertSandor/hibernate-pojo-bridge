@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.erinors.hpb.test;
+package com.erinors.hpb.tests;
 
 import com.erinors.hpb.server.api.PersistentObjectManager;
 

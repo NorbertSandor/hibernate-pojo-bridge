@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.erinors.hpb.test;
+package com.erinors.hpb.tests;
 
 import java.lang.reflect.Field;
 import java.util.LinkedList;

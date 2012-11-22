@@ -24,8 +24,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.erinors.hpb.server.api.PersistentObjectManager;
-import com.erinors.hpb.test.EmptyPersistentObjectManager;
-import com.erinors.hpb.test.SqlAppender;
+import com.erinors.hpb.tests.EmptyPersistentObjectManager;
+import com.erinors.hpb.tests.SqlAppender;
 import com.erinors.hpb.tests.integration.HpbIntegrationTestCase;
 
 public class LazyManyToManyListTest extends HpbIntegrationTestCase
