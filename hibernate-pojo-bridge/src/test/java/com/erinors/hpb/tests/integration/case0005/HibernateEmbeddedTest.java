@@ -21,7 +21,7 @@ import java.util.Arrays;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.erinors.hpb.test.SqlAppender;
+import com.erinors.hpb.tests.SqlAppender;
 import com.erinors.hpb.tests.integration.HpbIntegrationTestCase;
 
 public class HibernateEmbeddedTest extends HpbIntegrationTestCase
