@@ -14,29 +14,29 @@
  * limitations under the License.
  */
 
-package com.erinors.hpb.client.impl;
+package com.erinors.hpb.shared.impl;
 
 import com.google.gwt.user.client.rpc.SerializationException;
 import com.google.gwt.user.client.rpc.SerializationStreamReader;
 import com.google.gwt.user.client.rpc.SerializationStreamWriter;
-import com.google.gwt.user.client.rpc.core.java.util.HashMap_CustomFieldSerializer;
+import com.google.gwt.user.client.rpc.core.java.util.ArrayList_CustomFieldSerializer;
 
 /**
  * @author Norbert Sándor
  */
-public class PersistentMap_CustomFieldSerializer
+public class PersistentList_CustomFieldSerializer
 {
-    public static void deserialize(SerializationStreamReader streamReader, PersistentMap<?, ?> instance)
+    public static void deserialize(SerializationStreamReader streamReader, PersistentList<?> instance)
             throws SerializationException
     {
-        HashMap_CustomFieldSerializer.deserialize(streamReader, instance);
+        ArrayList_CustomFieldSerializer.deserialize(streamReader, instance);
         instance.setDirty(streamReader.readBoolean());
     }
 
-    public static void serialize(SerializationStreamWriter streamWriter, PersistentMap<?, ?> instance)
+    public static void serialize(SerializationStreamWriter streamWriter, PersistentList<?> instance)
             throws SerializationException
     {
-        HashMap_CustomFieldSerializer.serialize(streamWriter, instance);
+        ArrayList_CustomFieldSerializer.serialize(streamWriter, instance);
         streamWriter.writeBoolean(instance.isDirty());
     }
 }

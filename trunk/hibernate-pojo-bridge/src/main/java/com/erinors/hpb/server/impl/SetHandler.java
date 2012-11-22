@@ -22,7 +22,7 @@ import java.util.Set;
 import org.hibernate.collection.internal.PersistentSet;
 import org.hibernate.collection.spi.PersistentCollection;
 
-import com.erinors.hpb.client.impl.UninitializedPersistentSet;
+import com.erinors.hpb.shared.impl.UninitializedPersistentSet;
 
 /**
  * @author Norbert Sándor
@@ -44,7 +44,7 @@ public class SetHandler extends AbstractPersistentObjectHandler
         {
             if (((PersistentSet) source).wasInitialized())
             {
-                com.erinors.hpb.client.impl.PersistentSet<Object> set = new com.erinors.hpb.client.impl.PersistentSet<Object>(
+                com.erinors.hpb.shared.impl.PersistentSet<Object> set = new com.erinors.hpb.shared.impl.PersistentSet<Object>(
                         source.size());
                 context.addProcessedObject(object, set);
 
@@ -95,7 +95,7 @@ public class SetHandler extends AbstractPersistentObjectHandler
             result = new PersistentSet(context.getSessionImplementor());
             context.addProcessedObject(object, result);
         }
-        else if (source instanceof com.erinors.hpb.client.impl.PersistentSet)
+        else if (source instanceof com.erinors.hpb.shared.impl.PersistentSet)
         {
             PersistentSet set = new PersistentSet(context.getSessionImplementor(), new HashSet<Object>());
             context.addProcessedObject(object, set);
@@ -105,7 +105,7 @@ public class SetHandler extends AbstractPersistentObjectHandler
                 set.add(context.merge(element));
             }
 
-            if (((com.erinors.hpb.client.impl.PersistentSet<?>) source).isDirty())
+            if (((com.erinors.hpb.shared.impl.PersistentSet<?>) source).isDirty())
             {
                 set.dirty();
             }

@@ -21,7 +21,7 @@ import java.util.TreeSet;
 
 import org.hibernate.collection.internal.PersistentSortedSet;
 
-import com.erinors.hpb.client.impl.UninitializedPersistentSortedSet;
+import com.erinors.hpb.shared.impl.UninitializedPersistentSortedSet;
 
 /**
  * @author Norbert Sándor

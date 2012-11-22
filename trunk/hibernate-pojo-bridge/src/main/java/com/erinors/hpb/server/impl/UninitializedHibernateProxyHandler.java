@@ -21,7 +21,7 @@ import java.lang.reflect.Constructor;
 import org.hibernate.proxy.HibernateProxy;
 import org.hibernate.proxy.LazyInitializer;
 
-import com.erinors.hpb.client.api.HibernateProxyPojoSupport;
+import com.erinors.hpb.shared.api.HibernateProxyPojoSupport;
 
 /**
  * @author Norbert Sándor

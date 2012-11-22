@@ -22,7 +22,7 @@ import java.util.TreeMap;
 
 import org.hibernate.collection.internal.PersistentSortedMap;
 
-import com.erinors.hpb.client.impl.UninitializedPersistentSortedMap;
+import com.erinors.hpb.shared.impl.UninitializedPersistentSortedMap;
 
 /**
  * @author Norbert Sándor
