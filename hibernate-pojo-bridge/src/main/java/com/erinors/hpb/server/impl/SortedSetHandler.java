@@ -20,14 +20,21 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import org.hibernate.collection.internal.PersistentSortedSet;
+import org.springframework.stereotype.Service;
 
 import com.erinors.hpb.shared.impl.UninitializedPersistentSortedSet;
 
 /**
  * @author Norbert Sándor
  */
+@Service
 public class SortedSetHandler extends AbstractPersistentObjectHandler
 {
+    public SortedSetHandler()
+    {
+        super(200);
+    }
+
     @Override
     public Object clone(CloningContext context, Object object)
     {

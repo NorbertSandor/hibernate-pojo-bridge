@@ -67,6 +67,6 @@ public abstract class HpbIntegrationTestCase
 
     protected PersistentObjectManager getPersistentObjectManager()
     {
-        return (PersistentObjectManager) applicationContext.getBean("persistentObjectManager");
+        return applicationContext.getBean(PersistentObjectManager.class);
     }
 }

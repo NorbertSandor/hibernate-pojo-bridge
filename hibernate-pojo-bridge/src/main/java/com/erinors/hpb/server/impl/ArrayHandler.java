@@ -2,8 +2,16 @@ package com.erinors.hpb.server.impl;
 
 import java.lang.reflect.Array;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class ArrayHandler extends AbstractPersistentObjectHandler
 {
+    public ArrayHandler()
+    {
+        super(150);
+    }
+
     @Override
     public Object clone(CloningContext context, Object object)
     {

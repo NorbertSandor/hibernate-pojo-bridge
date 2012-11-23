@@ -22,6 +22,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.Transient;
 
 import org.apache.commons.beanutils.PropertyUtils;
+import org.springframework.stereotype.Service;
 
 /**
  * Hibernate handles embedded objects in a special way, this handler helps to achieve a more logical operation.<br/>
@@ -34,7 +35,13 @@ import org.apache.commons.beanutils.PropertyUtils;
  * The most practical solution would be to revert such changes made to an entity, but because of HHH-5911 it is
  * currently not possible.
  */
+@Service
 public class HibernateEmbeddedObjectHandler extends JavaBeanHandler {
+    public HibernateEmbeddedObjectHandler()
+    {
+        super(400);
+    }
+    
     @Override
     public Object clone(CloningContext context, Object object) {
         return null;

@@ -18,11 +18,19 @@ package com.erinors.hpb.server.impl;
 
 import java.util.Date;
 
+import org.springframework.stereotype.Service;
+
 /**
  * @author Norbert Sándor
  */
+@Service
 public class DateHandler extends AbstractPersistentObjectHandler
 {
+    public DateHandler()
+    {
+        super(100);
+    }
+
     @Override
     public Object clone(CloningContext context, Object object)
     {

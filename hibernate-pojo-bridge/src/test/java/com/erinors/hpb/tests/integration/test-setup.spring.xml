@@ -15,10 +15,10 @@
 		http://www.springframework.org/schema/util/spring-util-2.0.xsd
 		">
 
-	<import resource="classpath:/com/erinors/hpb/server/spring/hpb.spring.xml" />
-
 	<context:annotation-config />
 
+    <bean class="com.erinors.hpb.server.api.HpbConfig"/>
+  
 	<bean id="propertyPlaceholderConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="systemPropertiesMode">
@@ -50,9 +50,5 @@
 
 	<bean id="persistenceService"
 		class="com.erinors.hpb.tests.integration.PersistenceServiceImpl" />
-
-	<bean id="persistentObjectManager" class="com.erinors.hpb.server.impl.PersistentObjectManagerImpl">
-		<property name="entityManagerFactory" ref="entityManagerFactory" />
-	</bean>
 
 </beans>

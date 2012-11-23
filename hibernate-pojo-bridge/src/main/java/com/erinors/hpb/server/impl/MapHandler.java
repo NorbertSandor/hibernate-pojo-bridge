@@ -21,14 +21,21 @@ import java.util.Map;
 
 import org.hibernate.collection.internal.PersistentMap;
 import org.hibernate.collection.spi.PersistentCollection;
+import org.springframework.stereotype.Service;
 
 import com.erinors.hpb.shared.impl.UninitializedPersistentMap;
 
 /**
  * @author Norbert Sándor
  */
+@Service
 public class MapHandler extends AbstractPersistentObjectHandler
 {
+    public MapHandler()
+    {
+        super(300);
+    }
+
     @Override
     public Object clone(CloningContext context, Object object)
     {
