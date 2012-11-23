@@ -23,6 +23,8 @@ import java.util.List;
 
 import org.hibernate.proxy.HibernateProxy;
 import org.hibernate.proxy.LazyInitializer;
+import org.springframework.core.Ordered;
+import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
 
 import com.erinors.hpb.shared.api.HibernateProxyPojoSupport;
@@ -30,11 +32,22 @@ import com.erinors.hpb.shared.api.HibernateProxyPojoSupport;
 /**
  * @author Norbert Sándor
  */
+@Service
 public class JavaBeanHandler extends AbstractPersistentObjectHandler
 {
     private interface ObjectCopier
     {
         Object processObject(Object object);
+    }
+
+    public JavaBeanHandler()
+    {
+        super(Ordered.LOWEST_PRECEDENCE);
+    }
+
+    protected JavaBeanHandler(int order)
+    {
+        super(order);
     }
 
     @Override

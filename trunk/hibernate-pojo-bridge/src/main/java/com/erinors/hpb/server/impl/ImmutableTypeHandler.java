@@ -22,11 +22,20 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.springframework.core.Ordered;
+import org.springframework.stereotype.Service;
+
 /**
  * @author Norbert Sándor
  */
+@Service
 public class ImmutableTypeHandler extends AbstractPersistentObjectHandler
 {
+    public ImmutableTypeHandler()
+    {
+        super(Ordered.HIGHEST_PRECEDENCE);
+    }
+
     private static final Set<Class<?>> immutableTypeClasses = new HashSet<Class<?>>(Arrays.asList(new Class<?>[] {
             Boolean.class, Byte.class, Character.class, Double.class, Float.class, Integer.class, Long.class,
             Short.class, String.class, BigDecimal.class, BigInteger.class }));

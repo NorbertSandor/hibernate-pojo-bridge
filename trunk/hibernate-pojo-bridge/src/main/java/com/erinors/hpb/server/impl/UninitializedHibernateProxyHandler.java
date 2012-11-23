@@ -20,14 +20,21 @@ import java.lang.reflect.Constructor;
 
 import org.hibernate.proxy.HibernateProxy;
 import org.hibernate.proxy.LazyInitializer;
+import org.springframework.stereotype.Service;
 
 import com.erinors.hpb.shared.api.HibernateProxyPojoSupport;
 
 /**
  * @author Norbert Sándor
  */
+@Service
 public class UninitializedHibernateProxyHandler extends AbstractPersistentObjectHandler
 {
+    public UninitializedHibernateProxyHandler()
+    {
+        super(300);
+    }
+
     @Override
     public Object clone(CloningContext context, Object object)
     {
@@ -79,7 +86,7 @@ public class UninitializedHibernateProxyHandler extends AbstractPersistentObject
         result.setUninitializedHibernateProxyId(lazyInitializer.getIdentifier());
 
         context.addProcessedObject(object, result);
-        
+
         return result;
     }
 

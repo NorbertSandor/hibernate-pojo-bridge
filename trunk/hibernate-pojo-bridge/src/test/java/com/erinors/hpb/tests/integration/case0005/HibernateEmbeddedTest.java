@@ -26,11 +26,6 @@ import com.erinors.hpb.tests.integration.HpbIntegrationTestCase;
 
 public class HibernateEmbeddedTest extends HpbIntegrationTestCase
 {
-    protected String getSpringConfig()
-    {
-        return "classpath:/com/erinors/hpb/tests/integration/case0005/test-setup.spring.xml";
-    }
-
     @Test
     public void testRevertEmbeddedAnomaly()
     {
@@ -109,6 +104,7 @@ public class HibernateEmbeddedTest extends HpbIntegrationTestCase
             }
         });
 
-        Assert.assertEquals(Arrays.asList("insert into Parent (version, intValue, id) values (0, 0, 100)"), SqlAppender.get().getSql());
+        Assert.assertEquals(Arrays.asList("insert into Parent (version, intValue, id) values (0, 0, 100)"), SqlAppender
+                .get().getSql());
     }
 }

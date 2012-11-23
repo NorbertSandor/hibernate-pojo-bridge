@@ -16,12 +16,20 @@
 
 package com.erinors.hpb.server.impl;
 
+import org.springframework.stereotype.Service;
+
 /**
  * @author Norbert Sándor
  */
+@Service
 public abstract class AbstractPersistentObjectHandler implements PersistentObjectHandler
 {
     private int order;
+
+    protected AbstractPersistentObjectHandler(int order)
+    {
+        setOrder(order);
+    }
 
     @Override
     public int getOrder()

@@ -21,14 +21,21 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 import org.hibernate.collection.internal.PersistentSortedMap;
+import org.springframework.stereotype.Service;
 
 import com.erinors.hpb.shared.impl.UninitializedPersistentSortedMap;
 
 /**
  * @author Norbert Sándor
  */
+@Service
 public class SortedMapHandler extends AbstractPersistentObjectHandler
 {
+    public SortedMapHandler()
+    {
+        super(200);
+    }
+
     @Override
     public Object clone(CloningContext context, Object object)
     {

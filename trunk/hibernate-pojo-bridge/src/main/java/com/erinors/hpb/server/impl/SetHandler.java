@@ -21,14 +21,21 @@ import java.util.Set;
 
 import org.hibernate.collection.internal.PersistentSet;
 import org.hibernate.collection.spi.PersistentCollection;
+import org.springframework.stereotype.Service;
 
 import com.erinors.hpb.shared.impl.UninitializedPersistentSet;
 
 /**
  * @author Norbert Sándor
  */
+@Service
 public class SetHandler extends AbstractPersistentObjectHandler
 {
+    public SetHandler()
+    {
+        super(300);
+    }
+
     @Override
     public Object clone(CloningContext context, Object object)
     {

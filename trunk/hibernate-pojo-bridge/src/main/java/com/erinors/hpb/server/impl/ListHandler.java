@@ -21,14 +21,21 @@ import java.util.List;
 
 import org.hibernate.collection.internal.PersistentList;
 import org.hibernate.collection.spi.PersistentCollection;
+import org.springframework.stereotype.Service;
 
 import com.erinors.hpb.shared.impl.UninitializedPersistentList;
 
 /**
  * @author Norbert Sándor
  */
+@Service
 public class ListHandler extends AbstractPersistentObjectHandler
 {
+    public ListHandler()
+    {
+        super(300);
+    }
+
     @Override
     public Object clone(CloningContext context, Object object)
     {
