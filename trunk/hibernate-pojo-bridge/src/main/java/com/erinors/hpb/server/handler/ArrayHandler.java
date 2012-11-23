@@ -1,4 +1,4 @@
-package com.erinors.hpb.server.impl;
+package com.erinors.hpb.server.handler;
 
 import java.lang.reflect.Array;
 

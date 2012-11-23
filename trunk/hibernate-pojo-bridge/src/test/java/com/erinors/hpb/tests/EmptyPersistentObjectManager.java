@@ -16,7 +16,7 @@
 
 package com.erinors.hpb.tests;
 
-import com.erinors.hpb.server.api.PersistentObjectManager;
+import com.erinors.hpb.server.service.PersistentObjectManager;
 
 public class EmptyPersistentObjectManager implements PersistentObjectManager
 {

@@ -24,7 +24,7 @@ import org.hibernate.proxy.HibernateProxy;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.erinors.hpb.server.api.PersistentObjectManager;
+import com.erinors.hpb.server.service.PersistentObjectManager;
 import com.erinors.hpb.tests.EmptyPersistentObjectManager;
 import com.erinors.hpb.tests.SqlAppender;
 import com.erinors.hpb.tests.integration.HpbIntegrationTestCase;

@@ -14,16 +14,22 @@
  * limitations under the License.
  */
 
-package com.erinors.hpb.server.impl;
+package com.erinors.hpb.server.handler;
+
+import javax.persistence.EntityManager;
+
+import org.hibernate.engine.spi.SessionImplementor;
 
 /**
  * @author Norbert Sándor
  */
-public interface Context
+public interface MergingContext extends Context
 {
-    Object getProcessedObject(Object source);
+    void addProcessedObject(Object source, Object merged);
 
-    boolean isProcessed(Object source);
+    Object merge(Object object);
 
-    void addProcessedObject(Object source, Object processed);
+    EntityManager getEntityManager();
+
+    SessionImplementor getSessionImplementor();
 }

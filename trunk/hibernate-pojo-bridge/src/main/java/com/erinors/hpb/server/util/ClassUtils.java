@@ -1,4 +1,4 @@
-package com.erinors.hpb.server.impl;
+package com.erinors.hpb.server.util;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -47,6 +47,18 @@ public class ClassUtils
         if (clazz.getSuperclass() != null)
         {
             collectCloneableFields(clazz.getSuperclass(), fields);
+        }
+    }
+
+    public static <T> T newInstance(Class<? extends T> clazz)
+    {
+        try
+        {
+            return clazz.newInstance();
+        }
+        catch (Exception e)
+        {
+            throw new RuntimeException("Cannot instantiate: " + clazz, e);
         }
     }
 

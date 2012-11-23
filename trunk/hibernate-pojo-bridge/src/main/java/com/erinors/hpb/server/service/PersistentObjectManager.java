@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.erinors.hpb.server.api;
+package com.erinors.hpb.server.service;
 
 /**
  * @author Norbert Sándor

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.erinors.hpb.server.impl;
+package com.erinors.hpb.server.serviceimpl;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -34,7 +34,8 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.core.OrderComparator;
 import org.springframework.stereotype.Service;
 
-import com.erinors.hpb.server.api.PersistentObjectManager;
+import com.erinors.hpb.server.handler.PersistentObjectHandler;
+import com.erinors.hpb.server.service.PersistentObjectManager;
 
 /**
  * @author Norbert Sándor

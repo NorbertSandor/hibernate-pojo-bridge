@@ -14,13 +14,17 @@
  * limitations under the License.
  */
 
-package com.erinors.hpb.server.impl;
+package com.erinors.hpb.server.serviceimpl;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
 import org.hibernate.engine.spi.SessionImplementor;
+
+import com.erinors.hpb.server.handler.AbstractContext;
+import com.erinors.hpb.server.handler.MergingContext;
+import com.erinors.hpb.server.handler.PersistentObjectHandler;
 
 /**
  * @author Norbert Sándor
