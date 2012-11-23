@@ -23,7 +23,7 @@ import java.util.List;
 import org.junit.Assert;
 import org.springframework.util.ReflectionUtils;
 
-import com.erinors.hpb.server.impl.ClassUtils;
+import com.erinors.hpb.server.util.ClassUtils;
 
 public class HpbTestUtils
 {

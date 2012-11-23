@@ -17,7 +17,7 @@
 
 	<context:annotation-config />
 
-    <bean class="com.erinors.hpb.server.api.HpbConfig"/>
+    <bean class="com.erinors.hpb.server.HpbConfig"/>
   
 	<bean id="propertyPlaceholderConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">

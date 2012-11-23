@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.erinors.hpb.server.impl;
+package com.erinors.hpb.server.handler;
 
 import java.util.ArrayList;
 import java.util.List;

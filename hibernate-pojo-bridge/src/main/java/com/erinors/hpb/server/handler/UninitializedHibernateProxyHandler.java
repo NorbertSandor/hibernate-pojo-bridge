@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.erinors.hpb.server.impl;
+package com.erinors.hpb.server.handler;
 
 import java.lang.reflect.Constructor;
 
@@ -22,6 +22,7 @@ import org.hibernate.proxy.HibernateProxy;
 import org.hibernate.proxy.LazyInitializer;
 import org.springframework.stereotype.Service;
 
+import com.erinors.hpb.server.util.ClassUtils;
 import com.erinors.hpb.shared.api.HibernateProxyPojoSupport;
 
 /**

@@ -14,9 +14,13 @@
  * limitations under the License.
  */
 
-package com.erinors.hpb.server.impl;
+package com.erinors.hpb.server.serviceimpl;
 
 import java.util.List;
+
+import com.erinors.hpb.server.handler.AbstractContext;
+import com.erinors.hpb.server.handler.CloningContext;
+import com.erinors.hpb.server.handler.PersistentObjectHandler;
 
 /**
  * @author Norbert Sándor

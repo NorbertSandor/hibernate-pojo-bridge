@@ -6,7 +6,7 @@
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ *  
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -14,22 +14,14 @@
  * limitations under the License.
  */
 
-package com.erinors.hpb.server.impl;
-
-import javax.persistence.EntityManager;
-
-import org.hibernate.engine.spi.SessionImplementor;
+package com.erinors.hpb.server.handler;
 
 /**
  * @author Norbert Sándor
  */
-public interface MergingContext extends Context
+public interface CloningContext extends Context
 {
-    void addProcessedObject(Object source, Object merged);
+    void addProcessedObject(Object source, Object cloned);
 
-    Object merge(Object object);
-
-    EntityManager getEntityManager();
-
-    SessionImplementor getSessionImplementor();
+    Object clone(Object object);
 }
